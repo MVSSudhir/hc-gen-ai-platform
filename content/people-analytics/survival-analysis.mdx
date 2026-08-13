@@ -1,0 +1,39 @@
+---
+id: survival-analysis
+slug: survival-analysis
+vertical: people-analytics
+contentType: analytical-method
+title: Survival Analysis
+description: Model time-to-event outcomes such as attrition or time-to-fill with censored data.
+domain: attrition
+tags:
+  - attrition
+analyticalTypes:
+  - predictive
+  - diagnostic
+purpose: >
+  Model time-to-event outcomes such as attrition or time-to-fill with censored data.
+businessQuestions:
+  - "At what tenure does attrition hazard peak?"
+  - "What is predicted time-to-fill by role family?"
+dataRequired:
+  - Clean employee event history
+  - Consistent definitions
+  - Adequate sample size
+method: >
+  Kaplan-Meier curves and Cox models estimate survival probabilities over time.
+exampleApplication: >
+  Compare survival curves for employees with and without internal mobility opportunities.
+interpretation: >
+  Hazard rates show when interventions are most impactful.
+limitations: >
+  Requires clean event dates; left censoring when history is incomplete.
+relatedMetrics:
+  - attrition-rate
+  - time-to-fill
+relatedUseCases: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---

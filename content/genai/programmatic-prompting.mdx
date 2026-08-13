@@ -1,0 +1,35 @@
+---
+id: programmatic-prompting
+slug: programmatic-prompting
+vertical: genai
+contentType: concept
+title: Programmatic Prompting
+description: "Building prompts through code—templates, optimizers, and typed modules—instead of one-off strings in notebooks."
+tags:
+  - optimization
+learningOrder: 34
+shortDefinition: >
+  Building prompts through code—templates, optimizers, and typed modules—instead of one-off strings in notebooks.
+whyItMatters:
+  - "Enables testing, diff review, and CI eval hooks."
+  - Connects product logic with prompt assembly.
+  - "Foundation for DSPy, agents, and dynamic RAG."
+keyIdeas:
+  - Templates with typed slots
+  - Version control
+  - Eval-driven change
+relatedConcepts:
+  - dspy
+  - context-engineering
+  - system-prompts
+  - miprov2
+  - embeddings
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Programmatic prompting treats prompts like SQL queries assembled from parameters: tenant policy fragments, retrieved chunks, tool outputs. Centralize assembly functions, forbid copy-paste prompt forks, and run golden tests on every change. Optimizers and teleprompters assume this structure—free-text prompts in scattered services resist automation and observability. Expose prompt assembly functions to observability with hashes of each segment so incidents map to exact template versions quickly. Ship only after eval gates pass on representative production failures.

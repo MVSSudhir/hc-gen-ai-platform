@@ -1,0 +1,33 @@
+---
+id: speech-to-text
+slug: speech-to-text
+vertical: genai
+contentType: concept
+title: Speech to Text
+description: "Automatic transcription of audio into text for downstream LLM summarization, search, and agent tools."
+tags:
+  - multimodal
+learningOrder: 83
+shortDefinition: >
+  Automatic transcription of audio into text for downstream LLM summarization, search, and agent tools.
+whyItMatters:
+  - "Unlocks call centers, meetings, and voice interfaces."
+  - Word error rate affects downstream reasoning quality.
+  - Privacy and consent requirements for recordings.
+keyIdeas:
+  - ASR pipelines
+  - Diarization
+  - Streaming vs batch
+relatedConcepts:
+  - multimodal-models
+  - summarization-patterns
+  - privacy-and-data
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Speech-to-text converts audio to transcripts feeding summarization, ticket creation, or compliance review. Choose models by accent coverage, latency, and diarization needs. Scrub PCI and PHI at transcription time when possible. Store raw audio retention separately from text with shorter TTLs where regulations allow. Measure downstream summarization quality conditional on ASR confidence bands; low-confidence segments may need human verification. Validate changes on production-like eval slices before rollout. Label low-confidence spans in UI so downstream summarizers can down-weight them. Label low-confidence spans in UI so downstream summarizers can down-weight them.

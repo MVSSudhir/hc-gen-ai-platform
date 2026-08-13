@@ -1,0 +1,35 @@
+---
+id: cost-optimization
+slug: cost-optimization
+vertical: genai
+contentType: concept
+title: Cost Optimization
+description: "Controlling spend via caching, routing, batching, compression, and step budgets without destroying quality."
+tags:
+  - enterprise-ai
+learningOrder: 88
+shortDefinition: >
+  Controlling spend via caching, routing, batching, compression, and step budgets without destroying quality.
+whyItMatters:
+  - Uncapped agent loops can exhaust budgets quickly.
+  - Finance needs predictable unit economics per feature.
+  - Reported industry case studies cite cache and routing wins.
+keyIdeas:
+  - Prompt caching
+  - Model routing
+  - Token budgets
+relatedConcepts:
+  - tokens-and-cost
+  - prompt-caching
+  - model-routing
+  - gepa
+  - ai-governance
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Cost optimization stacks techniques: stable prompt prefixes for cache hits, smaller models for drafting, aggressive context compression, batch offline jobs, and hard caps on agent steps. Shopify and Dropbox-style deployments in reported industry case studies highlight measuring cost per successful task—not per token alone. Pair cuts with eval guardrails so savings do not spike hallucinations. Tie optimization milestones to eval thresholds in writing—cost cuts that slip past quality gates become brand incidents quickly. Ship only after eval gates pass on representative production failures.

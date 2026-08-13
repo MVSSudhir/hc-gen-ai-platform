@@ -1,0 +1,35 @@
+---
+id: langgraph
+slug: langgraph
+vertical: genai
+contentType: concept
+title: LangGraph
+description: "Graph-based agent orchestration modeling workflows as state machines with nodes, edges, and checkpointed state."
+tags:
+  - agents
+learningOrder: 64
+shortDefinition: >
+  Graph-based agent orchestration modeling workflows as state machines with nodes, edges, and checkpointed state.
+whyItMatters:
+  - Explicit control flow aids debugging and compliance audits.
+  - Natural fit for cyclic tool loops with stop conditions.
+  - "Tradeoff: more boilerplate than role-playing frameworks."
+keyIdeas:
+  - State machine graphs
+  - Checkpointing
+  - Deterministic routing
+relatedConcepts:
+  - agents
+  - crewai
+  - autogen
+  - observability
+  - multi-agent-systems
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+LangGraph treats agent workflows as graphs: nodes are functions or model calls; edges encode transitions conditioned on state. Checkpointing enables human approval mid-flight and crash recovery. Choose LangGraph when you need predictable control flow, retries, and observability over improvisational dialogue. Compared to CrewAI's role-playing metaphors or AutoGen's conversational patterns, LangGraph optimizes operability and testability. Model failure transitions explicitly—retry, escalate, abort—instead of hoping the LLM improvises recovery prose users cannot action. Ship only after eval gates pass on representative production failures.

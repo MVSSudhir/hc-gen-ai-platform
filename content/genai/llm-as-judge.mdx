@@ -1,0 +1,34 @@
+---
+id: llm-as-judge
+slug: llm-as-judge
+vertical: genai
+contentType: concept
+title: LLM as Judge
+description: "Using a strong model to score another model's outputs against rubrics—relevance, safety, coherence."
+tags:
+  - evaluation
+learningOrder: 73
+shortDefinition: >
+  Using a strong model to score another model's outputs against rubrics—relevance, safety, coherence.
+whyItMatters:
+  - Scales eval beyond manual review for fast iteration.
+  - Biases exist—judges favor verbose or self-similar styles.
+  - Calibrate against human labels regularly.
+keyIdeas:
+  - Rubric prompts
+  - Pairwise comparison
+  - Judge bias
+relatedConcepts:
+  - g-eval
+  - evaluation
+  - faithfulness-and-relevance
+  - hallucination
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+LLM judges apply structured rubrics: "Score 1–5 whether each claim is supported by the passage." They enable overnight eval sweeps across prompt variants. Mitigate bias by rotating judge models, using chain-of-thought scoring templates, and anchoring with human-labeled gold items. Never deploy judge-only metrics without periodic human reconciliation. Rotate judge models and compare scores quarterly; judge drift has invalidated promotion decisions in mature teams. Ship only after eval gates pass on representative production failures.

@@ -1,0 +1,12 @@
+// Cloudflare Workers static-assets deployment.
+// The site is fully static: no Worker script, no server runtime.
+// Security headers are applied via public/_headers (copied into out/).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hc-gen-ai-platform",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

@@ -1,0 +1,35 @@
+---
+id: memory-patterns
+slug: memory-patterns
+vertical: genai
+contentType: concept
+title: Memory Patterns
+description: "Architectures for what the system remembers across sessions—working context, summaries, vector recall, and external stores."
+tags:
+  - context
+learningOrder: 27
+shortDefinition: >
+  Architectures for what the system remembers across sessions—working context, summaries, vector recall, and external stores.
+whyItMatters:
+  - LLMs are stateless without deliberate memory design.
+  - Wrong pattern leaks PII or stale preferences into prompts.
+  - Agent systems need tiered memory with clear eviction rules.
+keyIdeas:
+  - Short-term vs long-term
+  - Summarization
+  - Retrieval-backed recall
+relatedConcepts:
+  - chat-history-management
+  - agent-memory-tiers
+  - rag
+  - embeddings
+  - cache-miss-patterns
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Memory patterns decide how past interactions influence new answers. Inline history is simplest but hits window limits. Rolling summaries compress older turns. Vector memory retrieves relevant past facts by embedding similarity. Enterprise systems combine tiers: session buffer, user profile store, and authoritative knowledge base—with explicit consent and retention policies. Never assume the model remembers; wire memory through typed stores you can audit and delete. Document retention and deletion behaviour in user-facing privacy notices; memory you cannot erase becomes compliance debt quickly.

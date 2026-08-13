@@ -1,0 +1,35 @@
+---
+id: guardrails
+slug: guardrails
+vertical: genai
+contentType: concept
+title: Guardrails
+description: "Policy layers—input filters, output validators, tool allowlists—that constrain model behaviour before and after generation."
+tags:
+  - guardrails
+learningOrder: 77
+shortDefinition: >
+  Policy layers—input filters, output validators, tool allowlists—that constrain model behaviour before and after generation.
+whyItMatters:
+  - Models alone do not enforce business or legal rules.
+  - Defense in depth beyond prompt pleading.
+  - Required for regulated and customer-facing features.
+keyIdeas:
+  - Input validation
+  - Output filtering
+  - Tool policies
+relatedConcepts:
+  - prompt-injection
+  - llama-guard
+  - nemo-guardrails
+  - responsible-ai
+  - faithfulness-and-relevance
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Guardrails combine classifiers, rule engines, and schema validators around the LLM. Check inputs for injection and PII leakage; check outputs for policy violations before users see them. Fail closed on high-risk categories. Test guardrails with red-team suites whenever prompts or tools change. Test guardrails on adversarial inputs whenever tools or retrieval sources expand; new data paths reopen old injection classes. Validate changes on production-like eval slices before rollout. Review blocked and allowed samples weekly with policy owners to tune false positives.

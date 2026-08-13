@@ -1,0 +1,33 @@
+---
+id: crewai
+slug: crewai
+vertical: genai
+contentType: concept
+title: CrewAI
+description: "Multi-agent framework organizing agents as crews with roles, goals, and delegated tasks—emphasizing collaborative role-play."
+tags:
+  - agents
+learningOrder: 65
+shortDefinition: >
+  Multi-agent framework organizing agents as crews with roles, goals, and delegated tasks—emphasizing collaborative role-play.
+whyItMatters:
+  - Fast to prototype team-like workflows.
+  - Role prompts can drift without hard graph constraints.
+  - Compare against LangGraph when reliability dominates.
+keyIdeas:
+  - Role definitions
+  - Task delegation
+  - Sequential and hierarchical crews
+relatedConcepts:
+  - multi-agent-systems
+  - langgraph
+  - autogen
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+CrewAI assigns personas—Research Analyst, Editor—and chains their outputs. It excels in demos and content pipelines where flexible collaboration beats rigid graphs. Tradeoffs versus LangGraph: less explicit state-machine control, harder step-level replay. Versus AutoGen: more opinionated structure, less free-form group chat. Productionize with tool schemas, eval harnesses, and caps on delegation depth. Snapshot crew role prompts in git and diff them during incidents; role drift is a common source of sudden quality cliffs. Ship only after eval gates pass on representative production failures.

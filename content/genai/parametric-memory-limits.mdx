@@ -1,0 +1,35 @@
+---
+id: parametric-memory-limits
+slug: parametric-memory-limits
+vertical: genai
+contentType: concept
+title: Parametric Memory Limits
+description: "Knowledge compressed into model weights is static, approximate, and cannot be updated per request—unlike retrieval or tool-backed non-parametric memory."
+tags:
+  - foundations
+learningOrder: 3
+shortDefinition: >
+  Knowledge compressed into model weights is static, approximate, and cannot be updated per request—unlike retrieval or tool-backed non-parametric memory.
+whyItMatters:
+  - Explains hallucinations on niche or time-sensitive facts.
+  - "Justifies RAG, knowledge bases, and agent tool layers."
+  - "Sets realistic fine-tuning goals: behaviour tuning, not live fact storage."
+keyIdeas:
+  - Static weights
+  - Training cutoff
+  - Non-parametric complement
+relatedConcepts:
+  - llm
+  - rag
+  - knowledge-bases
+  - fine-tuning
+  - prompting
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Everything the model 'knows' without external input was absorbed during training into billions of parameters. That memory is broad but fuzzy: it confuses similar entities, invents plausible citations, and drifts from your ground truth. Updating weights is slow and expensive; injecting documents at query time is fast and auditable. Mature teams assume parametric memory is a prior, not a source of record, and wire explicit retrieval and citation paths for anything compliance-sensitive. Run periodic audits where experts compare model answers against authoritative systems of record to quantify parametric drift on your domain vocabulary.

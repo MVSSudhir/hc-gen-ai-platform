@@ -1,0 +1,35 @@
+---
+id: observability
+slug: observability
+vertical: genai
+contentType: concept
+title: Observability for LLM Apps
+description: "Tracing prompts, retrievals, tool calls, latencies, token costs, and scores across production requests."
+tags:
+  - evaluation
+learningOrder: 75
+shortDefinition: >
+  Tracing prompts, retrievals, tool calls, latencies, token costs, and scores across production requests.
+whyItMatters:
+  - Debuggability separates demo agents from operable systems.
+  - "Surfaces cache misses, retrieval gaps, and tool failures."
+  - Feeds continuous eval from live traffic samples.
+keyIdeas:
+  - Distributed traces
+  - Prompt versioning
+  - Cost dashboards
+relatedConcepts:
+  - evaluation
+  - rag-architecture
+  - cost-optimization
+  - g-eval
+  - faithfulness-and-relevance
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Observability captures each span: retrieval candidates, rerank scores, assembled prompt hash, model route, tool arguments, completion tokens, and user feedback. Correlate traces with eval metrics when incidents spike. Redact PII at ingest. Platforms like LangSmith, Phoenix, and custom OpenTelemetry pipelines are common—pick one and enforce instrumentation standards across teams. Sample production traces into weekly human review queues; live traffic finds edge cases synthetic evals miss entirely. Ship only after eval gates pass on representative production failures.

@@ -1,0 +1,35 @@
+---
+id: multi-agent-systems
+slug: multi-agent-systems
+vertical: genai
+contentType: concept
+title: Multi-Agent Systems
+description: "Multiple specialized agents coordinating—researcher, coder, reviewer—via shared state or message passing."
+tags:
+  - agents
+learningOrder: 63
+shortDefinition: >
+  Multiple specialized agents coordinating—researcher, coder, reviewer—via shared state or message passing.
+whyItMatters:
+  - Mirrors team workflows but adds coordination overhead.
+  - Framework choice affects debuggability and cost.
+  - Needs clear role boundaries to avoid duplicate work.
+keyIdeas:
+  - Role specialization
+  - Orchestration
+  - Shared memory
+relatedConcepts:
+  - langgraph
+  - crewai
+  - autogen
+  - agent-memory-tiers
+  - human-in-the-loop
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Multi-agent setups divide labour: one agent gathers facts, another drafts, a third verifies policy. Wins on complex deliverables; fails when roles blur and agents talk past each other. Define interfaces—typed messages, shared blackboard, supervisor graph—and measure end-to-end success, not per-agent eloquence. Prefer fewer agents until single-agent plus tools plateau. Start with one agent plus tools; add specialized agents only when traces show repeated context overload on a single thread. Ship only after eval gates pass on representative production failures.

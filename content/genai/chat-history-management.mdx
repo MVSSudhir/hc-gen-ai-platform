@@ -1,0 +1,34 @@
+---
+id: chat-history-management
+slug: chat-history-management
+vertical: genai
+contentType: concept
+title: Chat History Management
+description: "Strategies to trim, summarize, and structure multi-turn conversations so quality stays high without blowing token budgets."
+tags:
+  - context
+learningOrder: 28
+shortDefinition: >
+  Strategies to trim, summarize, and structure multi-turn conversations so quality stays high without blowing token budgets.
+whyItMatters:
+  - Unbounded history is a top source of cost overruns and cache misses.
+  - Poor truncation loses constraints the user set ten turns ago.
+  - Sliding windows need compensating summary or memory retrieval.
+keyIdeas:
+  - Truncation policies
+  - Summary checkpoints
+  - Constraint re-injection
+relatedConcepts:
+  - memory-patterns
+  - cache-miss-patterns
+  - context-engineering
+  - dspy
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Chat products accumulate tokens fast. Define policies: keep last N turns verbatim, summarize older segments, re-inject standing constraints from structured state—not from hope the model recalls them. Sliding-window history that shifts the prefix every message prevents prefix caching on many providers. Persist business-critical slots (ticket ID, locale, auth scope) outside the transcript and inject them deterministically each turn. Store immutable business facts in structured session state rather than hoping the model extracts them reliably from free-form chat alone. Ship only after eval gates pass on representative production failures.

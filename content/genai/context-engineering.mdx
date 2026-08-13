@@ -1,0 +1,36 @@
+---
+id: context-engineering
+slug: context-engineering
+vertical: genai
+contentType: concept
+title: Context Engineering
+description: "Deliberate curation of what enters the prompt—ordering, compression, retrieval, and tool results—to maximize answer quality per token."
+tags:
+  - context
+learningOrder: 23
+shortDefinition: >
+  Deliberate curation of what enters the prompt—ordering, compression, retrieval, and tool results—to maximize answer quality per token.
+whyItMatters:
+  - Often beats raw model upgrades for RAG and agent reliability.
+  - "Connects prompting, retrieval, memory, and caching decisions."
+  - Core skill for production orchestration in 2026 stacks.
+keyIdeas:
+  - Selective inclusion
+  - Ordering heuristics
+  - Compression tiers
+relatedConcepts:
+  - semantic-density
+  - memory-patterns
+  - rag-architecture
+  - lost-in-the-middle
+  - context-window
+  - long-context
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Context engineering is the craft of assembling the smallest sufficient prompt. Rank retrieved chunks, deduplicate overlapping passages, summarize stale history, and inject tool outputs only when relevant. Co-design with evals: measure faithfulness and answer relevance as you change assembly rules. The best teams treat context assembly as code—typed, tested, and observable—not an ad hoc string concat in a route handler. Treat assembly code as a first-class service with unit tests on ranking, deduplication, and ACL filtering—not a 200-line script in a notebook.

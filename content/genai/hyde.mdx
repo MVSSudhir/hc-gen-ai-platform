@@ -1,0 +1,34 @@
+---
+id: hyde
+slug: hyde
+vertical: genai
+contentType: concept
+title: HyDE
+description: "Hypothetical Document Embeddings—generate a fake answer passage, embed it, and retrieve real documents similar to that hypothesis."
+tags:
+  - retrieval
+learningOrder: 48
+shortDefinition: >
+  Hypothetical Document Embeddings—generate a fake answer passage, embed it, and retrieve real documents similar to that hypothesis.
+whyItMatters:
+  - Bridges lexical gap between short questions and long answers.
+  - Cheap query transform for semantic retrieval.
+  - Can hallucinate off-domain if not constrained.
+keyIdeas:
+  - Hypothetical answer
+  - Embedding proxy
+  - Domain prompting
+relatedConcepts:
+  - query-transformation
+  - semantic-search
+  - embeddings
+  - indexing-strategies
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+HyDE asks the model to draft a plausible answer without retrieval, embeds that draft, and searches for real chunks near the hypothetical vector. It helps when questions are short but answers are long. Constrain the generator with domain instructions and low temperature; discard hypotheses that cite nonexistent products. Compare against vanilla embedding of the raw query on your eval set—HyDE is not free lunch on factual precision. Disable HyDE for high-stakes factual lookups unless human reviewers validate gains on your precision-critical query slice.

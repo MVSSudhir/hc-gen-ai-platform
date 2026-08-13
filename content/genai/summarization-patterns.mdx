@@ -1,0 +1,35 @@
+---
+id: summarization-patterns
+slug: summarization-patterns
+vertical: genai
+contentType: concept
+title: Summarization Patterns
+description: "Map-reduce, hierarchical, and extractive-abstractive blends for long content—docs, calls, threads."
+tags:
+  - multimodal
+learningOrder: 84
+shortDefinition: >
+  Map-reduce, hierarchical, and extractive-abstractive blends for long content—docs, calls, threads.
+whyItMatters:
+  - Core enterprise use case with measurable ROI.
+  - Pattern choice affects faithfulness on long inputs.
+  - Pairs with eval rubrics for omission and distortion.
+keyIdeas:
+  - Map-reduce
+  - Refine loops
+  - Structured summaries
+relatedConcepts:
+  - long-context
+  - g-eval
+  - encoder-decoder
+  - speech-to-text
+  - enterprise-ai-patterns
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Summarization patterns manage length: map-reduce summarizes chunks then merges; refine iteratively updates a running summary; structured outputs force sections—decisions, risks, action items. Pick patterns based on fidelity needs—legal summaries may require extractive anchors. Evaluate with G-Eval style rubrics for omission, not only fluency. Require structured sections—decisions, risks, owners—in executive summaries so readers can skim reliably under time pressure. Validate changes on production-like eval slices before rollout. Compare extractive anchors against abstractive prose on compliance-sensitive summaries. Compare extractive anchors against abstractive prose on compliance-sensitive summaries.

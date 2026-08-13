@@ -1,0 +1,39 @@
+---
+id: trend-decomposition
+slug: trend-decomposition
+vertical: people-analytics
+contentType: analytical-method
+title: Trend Decomposition
+description: "Separate time series into trend, seasonality, and residual components."
+domain: workforce
+tags:
+  - workforce
+analyticalTypes:
+  - descriptive
+  - diagnostic
+purpose: >
+  Separate time series into trend, seasonality, and residual components.
+businessQuestions:
+  - "Is attrition rising beyond seasonal patterns?"
+  - "Do hiring spikes follow predictable seasonality?"
+dataRequired:
+  - Clean employee event history
+  - Consistent definitions
+  - Adequate sample size
+method: >
+  Decompose monthly metrics; analyze trend and seasonal indices.
+exampleApplication: >
+  Decompose monthly voluntary attrition to distinguish seasonal graduations from structural increases.
+interpretation: >
+  Residual spikes warrant investigation beyond normal seasonal variation.
+limitations: >
+  Short history limits seasonality detection; structural breaks from reorganizations.
+relatedMetrics:
+  - attrition-rate
+  - time-to-fill
+relatedUseCases: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---

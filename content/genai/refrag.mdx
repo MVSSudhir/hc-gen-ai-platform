@@ -1,0 +1,35 @@
+---
+id: refrag
+slug: refrag
+vertical: genai
+contentType: concept
+title: REFRAG
+description: Retrieval compression pattern that keeps many candidate chunks as compact embeddings and expands only the ones the decoder needs back into tokens.
+tags:
+  - rag
+learningOrder: 56
+shortDefinition: >
+  Retrieval compression pattern that keeps many candidate chunks as compact embeddings and expands only the ones the decoder needs back into tokens.
+whyItMatters:
+  - Cuts wasted tokens from stuffing oversized retrieval sets into the prompt.
+  - Preserves broad recall while controlling latency and cost at decode time.
+  - Fits production stacks already paying for large context windows.
+keyIdeas:
+  - Compressed retrieval
+  - Selective expansion
+  - Compute efficiency
+relatedConcepts:
+  - advanced-rag
+  - context-engineering
+  - colbert
+  - cost-optimization
+  - graphrag
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+REFRAG-style pipelines separate "what might be relevant" from "what must be readable tokens." Candidates stay cheap as embeddings until a selector expands a smaller subset into the generator prompt. That reduces the Lost-in-the-Middle tax and the bill for stuffing twenty near-duplicates into every call. Implement with explicit budgets: max expanded chunks, max tokens, and a fallback when the selector is uncertain. Measure faithfulness before celebrating cost wins—compression that drops the supporting span is a silent regression. Log which chunks expanded versus stayed compressed so ops can debug wrong answers.

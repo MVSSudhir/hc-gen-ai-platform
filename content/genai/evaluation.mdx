@@ -1,0 +1,37 @@
+---
+id: evaluation
+slug: evaluation
+vertical: genai
+contentType: concept
+title: LLM Evaluation
+description: "Systematic measurement of quality, safety, and cost across prompts, models, and pipelines—not vibe checks alone."
+tags:
+  - evaluation
+learningOrder: 71
+shortDefinition: >
+  Systematic measurement of quality, safety, and cost across prompts, models, and pipelines—not vibe checks alone.
+whyItMatters:
+  - Prevents silent regressions when models or prompts change.
+  - Enables DSPy optimization and CI gates.
+  - Builds organizational trust in AI features.
+keyIdeas:
+  - Golden datasets
+  - Automated judges
+  - Regression suites
+relatedConcepts:
+  - llm-as-judge
+  - g-eval
+  - ragas
+  - observability
+  - rag-evaluation
+  - model-context-protocol
+  - hallucination
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Evaluation combines labeled tasks, synthetic edge cases, and production sampled failures scored by rules or judges. Track metrics per slice—language, product line, risk tier. Run evals in CI on prompt PRs and nightly on model routes. Pair quantitative scores with human review queues for subjective quality. Treat eval datasets like production data with access controls; they often contain real customer text pasted during debugging. Ship only after eval gates pass on representative production failures.

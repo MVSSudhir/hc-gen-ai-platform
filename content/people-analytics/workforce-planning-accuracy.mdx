@@ -1,0 +1,44 @@
+---
+id: workforce-planning-accuracy
+slug: workforce-planning-accuracy
+vertical: people-analytics
+contentType: metric
+title: Workforce Planning Accuracy
+description: "Are our workforce plans reliable for budgeting?"
+domain: workforce-planning
+tags:
+  - workforce-planning
+analyticalTypes:
+  - diagnostic
+  - predictive
+definition: >
+  How closely actual headcount and skills outcomes match plan.
+formula: >
+  1 − (|Actual − Plan| / Plan) for headcount or skills targets
+businessQuestion: >
+  Are our workforce plans reliable for budgeting?
+interpretation: >
+  Persistent misses indicate broken assumptions or poor governance.
+recommendedSegments:
+  - Business unit
+  - Geography
+  - Function
+  - Grade or level
+relatedMetrics:
+  - headcount
+  - skills-coverage-index
+commonPitfalls: >
+  Comparing plans updated mid-year without versioning.
+visualization:
+  - Trend over time
+  - Segment comparison
+  - Distribution
+businessDecisions: >
+  Planning process redesign, forecast model investment, and accountability.
+relatedUseCases: []
+relatedDashboards: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---

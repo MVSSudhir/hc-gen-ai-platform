@@ -1,0 +1,35 @@
+---
+id: vector-databases
+slug: vector-databases
+vertical: genai
+contentType: concept
+title: Vector Databases
+description: Storage engines optimized for approximate nearest-neighbor search over millions of embeddings with metadata filters.
+tags:
+  - embeddings
+learningOrder: 37
+shortDefinition: >
+  Storage engines optimized for approximate nearest-neighbor search over millions of embeddings with metadata filters.
+whyItMatters:
+  - Operational home for RAG indexes and agent memory.
+  - "Filter support (tenant, ACL, date) is as important as raw speed."
+  - Index parameters affect recall and rebuild cost.
+keyIdeas:
+  - ANN indexes
+  - Metadata filtering
+  - Sharding and replication
+relatedConcepts:
+  - embeddings
+  - indexing-strategies
+  - knowledge-bases
+  - vector-similarity
+  - chunking
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Vector databases—Pinecone, Weaviate, pgvector, and others—host embedding indexes with hybrid query APIs. Choose based on filter complexity, ops model, and consistency needs. Plan for reindex jobs when embedding models change. Treat collections as part of your data plane: backups, ACL sync, and deletion workflows must match source systems. Practice disaster recovery drills including full reindex from source systems; vector snapshots alone are useless without ingestion pipelines. Ship only after eval gates pass on representative production failures.

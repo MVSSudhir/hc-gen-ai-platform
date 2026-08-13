@@ -1,0 +1,33 @@
+---
+id: semantic-chunking
+slug: semantic-chunking
+vertical: genai
+contentType: concept
+title: Semantic Chunking
+description: Splitting text at natural topic boundaries detected by embedding similarity shifts between sentences or paragraphs.
+tags:
+  - embeddings
+learningOrder: 39
+shortDefinition: >
+  Splitting text at natural topic boundaries detected by embedding similarity shifts between sentences or paragraphs.
+whyItMatters:
+  - Keeps related ideas together better than blind fixed windows.
+  - Reduces fragments that confuse both retriever and reader model.
+  - Costs extra embedding passes during indexing.
+keyIdeas:
+  - Breakpoint detection
+  - Coherence scoring
+  - Variable chunk sizes
+relatedConcepts:
+  - chunking
+  - late-chunking
+  - structure-aware-chunking
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Semantic chunking scans sentences, measuring embedding drift between neighbours; when similarity drops sharply, start a new chunk. Compared to fixed windows, it preserves topical units—helpful for policies and essays. Compared to structure-aware chunking, it ignores headings and tables unless text order reflects them. Use when documents lack reliable markup but read linearly; validate on Precision@K because overtly long semantic segments can dilute matches. Profile indexing cost on your largest tenants before rolling semantic chunking fleet-wide; variable segment sizes affect storage nonlinearly.

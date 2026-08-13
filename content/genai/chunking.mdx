@@ -1,0 +1,35 @@
+---
+id: chunking
+slug: chunking
+vertical: genai
+contentType: concept
+title: Chunking
+description: Splitting documents into retrieval-sized pieces before embedding—balance context completeness against search precision.
+tags:
+  - embeddings
+learningOrder: 38
+shortDefinition: >
+  Splitting documents into retrieval-sized pieces before embedding—balance context completeness against search precision.
+whyItMatters:
+  - Bad chunking is the silent killer of RAG quality.
+  - Chunk size interacts with embedding model max length.
+  - Strategy depends on document structure and query type.
+keyIdeas:
+  - Fixed-size splits
+  - Overlap windows
+  - Structure boundaries
+relatedConcepts:
+  - semantic-chunking
+  - late-chunking
+  - structure-aware-chunking
+  - rag
+  - vector-databases
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Chunking decides what the retriever can return as atomic evidence. Fixed token windows are simple but split concepts mid-thought. Overlap reduces boundary cuts but increases storage. Compare semantic, late, and structure-aware strategies on your eval set—no universal best size. Always store metadata: source URL, heading path, page, and permissions for citation and filtering. Re-chunk when source formats change—PDF-to-Markdown migrations have invalidated more RAG systems than model upgrades ever did. Ship only after eval gates pass on representative production failures.

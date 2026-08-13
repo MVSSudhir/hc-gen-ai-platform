@@ -1,0 +1,44 @@
+---
+id: absenteeism-rate
+slug: absenteeism-rate
+vertical: people-analytics
+contentType: metric
+title: Absenteeism Rate
+description: "Is unplanned absence affecting productivity?"
+domain: workforce
+tags:
+  - workforce
+analyticalTypes:
+  - descriptive
+  - diagnostic
+definition: >
+  Unplanned absence as a share of scheduled work time.
+formula: >
+  (Unplanned absence hours / Scheduled hours) × 100
+businessQuestion: >
+  Is unplanned absence affecting productivity?
+interpretation: >
+  Spikes in segments may indicate burnout, disengagement, or local issues.
+recommendedSegments:
+  - Business unit
+  - Geography
+  - Function
+  - Grade or level
+relatedMetrics:
+  - employee-engagement-score
+  - overtime-rate
+commonPitfalls: >
+  Mixing PTO with unplanned absence; inconsistent hour tracking.
+visualization:
+  - Trend over time
+  - Segment comparison
+  - Distribution
+businessDecisions: >
+  Wellness programs, scheduling changes, and manager interventions.
+relatedUseCases: []
+relatedDashboards: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---

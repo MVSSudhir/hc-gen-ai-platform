@@ -1,0 +1,35 @@
+---
+id: citation-and-grounding
+slug: citation-and-grounding
+vertical: genai
+contentType: concept
+title: Citation and Grounding
+description: Requiring answers to quote or link retrieved evidence—and refusing when support is insufficient.
+tags:
+  - rag
+learningOrder: 52
+shortDefinition: >
+  Requiring answers to quote or link retrieved evidence—and refusing when support is insufficient.
+whyItMatters:
+  - Trust and compliance depend on traceable sources.
+  - Reduces undetected hallucination in enterprise QA.
+  - UX must show citations users can verify.
+keyIdeas:
+  - Inline citations
+  - Abstention
+  - Evidence spans
+relatedConcepts:
+  - rag
+  - faithfulness-and-relevance
+  - guardrails
+  - rag-architecture
+  - rag-evaluation
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Grounding policies instruct the model to tie claims to chunk IDs or URLs, use direct quotes for numbers, and say "I don't know" when retrieval misses. Validate automatically: NLI models or LLM judges compare answers to passages. User interfaces should surface citations prominently—not footnotes users never expand. Grounding is a product requirement, not a prompt afterthought. Train support staff to click citations during QA shifts; broken anchors erode trust faster than occasional wrong answers. Ship only after eval gates pass on representative production failures.

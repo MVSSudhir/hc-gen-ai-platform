@@ -1,0 +1,35 @@
+---
+id: knowledge-bases
+slug: knowledge-bases
+vertical: genai
+contentType: concept
+title: Knowledge Bases
+description: "Curated corpora—wikis, tickets, PDFs, APIs—governed for ingestion, access control, and freshness as RAG source of truth."
+tags:
+  - rag
+learningOrder: 58
+shortDefinition: >
+  Curated corpora—wikis, tickets, PDFs, APIs—governed for ingestion, access control, and freshness as RAG source of truth.
+whyItMatters:
+  - Garbage in remains garbage out regardless of model size.
+  - "ACL sync is a security requirement, not optional."
+  - Ownership and SLAs differ from generic vector dumps.
+keyIdeas:
+  - Source governance
+  - Freshness SLAs
+  - Permission mirroring
+relatedConcepts:
+  - indexing-strategies
+  - privacy-and-data
+  - rag-architecture
+  - graphrag
+  - naive-vs-production-rag
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+A knowledge base is more than an index—it defines authoritative sources, update cadence, redaction rules, and who may read which chunk. Connectors should respect deletes and permission changes intraday. Document owners approve inclusion tiers (customer-facing vs internal). When answers fail, check corpus gaps before blaming prompts. Assign corpus owners with OKRs on freshness and coverage; orphan wikis become silent RAG enemies within quarters. Ship only after eval gates pass on representative production failures.

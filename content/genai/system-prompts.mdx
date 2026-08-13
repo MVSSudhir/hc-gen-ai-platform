@@ -1,0 +1,35 @@
+---
+id: system-prompts
+slug: system-prompts
+vertical: genai
+contentType: concept
+title: System Prompts
+description: "Persistent instructions that define role, rules, and tone across turns, separate from the user's immediate request."
+tags:
+  - foundations
+learningOrder: 5
+shortDefinition: >
+  Persistent instructions that define role, rules, and tone across turns, separate from the user's immediate request.
+whyItMatters:
+  - Encodes product behaviour once instead of repeating it every message.
+  - "Primary place for safety, brand, and domain constraints."
+  - Mutable system prompts are a common prompt-cache miss pattern in production.
+keyIdeas:
+  - Standing rules
+  - Role definition
+  - Versioning
+relatedConcepts:
+  - prompting
+  - guardrails
+  - prompt-caching
+  - cache-miss-patterns
+  - zero-shot-and-few-shot
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+System prompts set the constitution of an assistant: what it may do, how it cites sources, when it escalates. Keep them specific and testable—"refuse medical diagnosis" beats "be safe." Version system prompts like code. If you mutate the system string per tenant or per request, you may forfeit prefix-cache savings on providers that cache stable prompt prefixes. Separate stable global rules from dynamic per-user inserts when optimizing latency and cost. Review system prompts in the same release process as API schema changes, because they are behaviour contracts customers experience directly.

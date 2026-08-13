@@ -1,0 +1,35 @@
+---
+id: teleprompters
+slug: teleprompters
+vertical: genai
+contentType: concept
+title: Teleprompters
+description: "DSPy optimizers that search over prompts, few-shot sets, or module parameters to maximize a training metric."
+tags:
+  - optimization
+learningOrder: 31
+shortDefinition: >
+  DSPy optimizers that search over prompts, few-shot sets, or module parameters to maximize a training metric.
+whyItMatters:
+  - Automates prompt iteration with reproducible experiments.
+  - MiPROv2 and GEPA represent different search strategies.
+  - Requires trustworthy eval signals to avoid overfitting.
+keyIdeas:
+  - Search space
+  - Metric-driven selection
+  - Bootstrap demonstrations
+relatedConcepts:
+  - dspy
+  - miprov2
+  - gepa
+  - evaluation
+  - dspy-signatures
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Teleprompters treat prompt design as search. They mutate instructions, select demonstrations, or adjust combinational rules, keeping changes that improve dev-set scores. Guard against overfitting tiny sets—hold out production-like failures. Combine with human review of winning prompts; optimizers exploit judge blind spots. Version optimized artifacts like any model checkpoint. Hold out a production-like failure set untouched during search; promote winners only when they generalize beyond training quirks. Ship only after eval gates pass on representative production failures.

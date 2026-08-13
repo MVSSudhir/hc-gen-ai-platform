@@ -1,0 +1,39 @@
+---
+id: driver-analysis
+slug: driver-analysis
+vertical: people-analytics
+contentType: analytical-method
+title: Driver Analysis
+description: Rank inputs by contribution to a workforce outcome for prioritization.
+domain: attrition
+tags:
+  - attrition
+analyticalTypes:
+  - diagnostic
+  - prescriptive
+purpose: >
+  Rank inputs by contribution to a workforce outcome for prioritization.
+businessQuestions:
+  - "What drives regrettable attrition most in engineering?"
+  - "Which funnel stage most limits hires?"
+dataRequired:
+  - Clean employee event history
+  - Consistent definitions
+  - Adequate sample size
+method: >
+  Use regression, Shapley values, or decomposition to rank driver impact.
+exampleApplication: >
+  Rank drivers of regrettable attrition to prioritize manager training vs comp fixes.
+interpretation: >
+  Top drivers focus limited HR resources on highest-leverage interventions.
+limitations: >
+  Correlated drivers split importance ambiguously.
+relatedMetrics:
+  - regrettable-attrition-rate
+  - employee-engagement-score
+relatedUseCases: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---

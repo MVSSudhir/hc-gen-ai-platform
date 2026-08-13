@@ -1,0 +1,35 @@
+---
+id: semantic-search
+slug: semantic-search
+vertical: genai
+contentType: concept
+title: Semantic Search
+description: Finding documents by meaning similarity between query and corpus embeddings rather than exact keyword match.
+tags:
+  - retrieval
+learningOrder: 43
+shortDefinition: >
+  Finding documents by meaning similarity between query and corpus embeddings rather than exact keyword match.
+whyItMatters:
+  - Captures paraphrases and conceptual questions keywords miss.
+  - Core retrieval stage before RAG generation.
+  - Fails on rare proper nouns without hybrid lexical backup.
+keyIdeas:
+  - Query embedding
+  - Top-K retrieval
+  - Similarity thresholds
+relatedConcepts:
+  - embeddings
+  - hybrid-search
+  - reranking
+  - rag
+  - multimodal-embeddings
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Semantic search embeds the user question, pulls nearest neighbours from the vector index, and passes hits to downstream rerankers or the LLM. Tune top-K: too low misses evidence; too high adds noise and tokens. Log queries with zero hits—they signal glossary gaps or stale indexes. Always pair with ACL filters so embeddings never leak cross-tenant data. Publish zero-hit queries to content owners monthly; they reveal glossary gaps faster than tuning embedding models alone. Ship only after eval gates pass on representative production failures.

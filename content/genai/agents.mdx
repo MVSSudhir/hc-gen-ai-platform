@@ -1,0 +1,35 @@
+---
+id: agents
+slug: agents
+vertical: genai
+contentType: concept
+title: AI Agents
+description: "LLM-driven systems that plan, use tools, and iterate toward goals—not just single-shot text completion."
+tags:
+  - agents
+learningOrder: 60
+shortDefinition: >
+  LLM-driven systems that plan, use tools, and iterate toward goals—not just single-shot text completion.
+whyItMatters:
+  - "Unlocks workflows: research, ticket triage, data entry with supervision."
+  - Introduces loops where cost and failure modes multiply.
+  - Requires explicit stop conditions and human gates.
+keyIdeas:
+  - Plan-act-observe loops
+  - Tool use
+  - State management
+relatedConcepts:
+  - planning-and-reasoning
+  - tool-calling
+  - langgraph
+  - human-in-the-loop
+  - naive-vs-production-rag
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Agents wrap the LLM in a control loop: observe state, decide next action, call tools, update memory, repeat until done or blocked. Reliability comes from typed tool interfaces, max step budgets, and eval scenarios mirroring production messiness. Start with narrow domains—one API, one database—before open-ended "do anything" assistants. Require idempotent tools and explicit max-step limits in every agent PR; production incidents often start as unbounded retry loops. Ship only after eval gates pass on representative production failures.

@@ -1,0 +1,35 @@
+---
+id: hallucination
+slug: hallucination
+vertical: genai
+contentType: concept
+title: Hallucination
+description: Model outputs that sound plausible but are factually unsupported or contradict provided evidence.
+tags:
+  - evaluation
+learningOrder: 72
+shortDefinition: >
+  Model outputs that sound plausible but are factually unsupported or contradict provided evidence.
+whyItMatters:
+  - Top risk in customer-facing and compliance workflows.
+  - RAG without faithfulness checks can increase confident errors.
+  - Detection blends automated metrics and human audit.
+keyIdeas:
+  - Unsupported claims
+  - Confident tone
+  - Faithfulness testing
+relatedConcepts:
+  - faithfulness-and-relevance
+  - citation-and-grounding
+  - guardrails
+  - evaluation
+  - llm-as-judge
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Hallucinations thrive when questions exceed context, retrieval misses, or prompts forbid "I don't know." Mitigate with grounding requirements, retrieval confidence thresholds, and faithfulness evals. Monitor citation click-through and support escalations as lagging indicators. Train support staff that fluent ≠ verified. Track hallucination rate alongside business metrics—support deflection means nothing if escalations spike due to wrong policies. Treat hallucination monitoring as a production checklist item, not a research curiosity, before you scale traffic or spend. Ship only after eval gates pass on representative production failures.

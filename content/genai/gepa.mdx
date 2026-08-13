@@ -1,0 +1,33 @@
+---
+id: gepa
+slug: gepa
+vertical: genai
+contentType: concept
+title: GEPA
+description: Genetic-Pareto prompt optimizer in DSPy that evolves prompt candidates under multi-objective metrics.
+tags:
+  - optimization
+learningOrder: 32
+shortDefinition: >
+  Genetic-Pareto prompt optimizer in DSPy that evolves prompt candidates under multi-objective metrics.
+whyItMatters:
+  - "Useful when balancing quality, length, and latency simultaneously."
+  - Reported industry case studies mention cost-quality Pareto gains.
+  - Complements single-metric teleprompters.
+keyIdeas:
+  - Evolutionary search
+  - Pareto fronts
+  - Multi-objective metrics
+relatedConcepts:
+  - teleprompters
+  - miprov2
+  - cost-optimization
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+GEPA explores populations of prompt variants, selecting those on the Pareto frontier—for example, high faithfulness without excessive token length. It helps when compressing prompts for cache-friendly prefixes while preserving accuracy. Feed it metrics you truly trade off; bogus composite scores produce brittle winners. Treat outputs as candidates for staging evals, not automatic production deploys. Report Pareto fronts to stakeholders in plain language—quality versus cost tradeoffs should be product decisions, not hidden ML artifacts. Ship only after eval gates pass on representative production failures.

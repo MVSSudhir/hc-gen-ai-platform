@@ -1,0 +1,35 @@
+---
+id: model-context-protocol
+slug: model-context-protocol
+vertical: genai
+contentType: concept
+title: Model Context Protocol (MCP)
+description: Open protocol connecting AI hosts to external MCP servers exposing tools and resources through a standard client-server contract.
+tags:
+  - tool-calling
+learningOrder: 70
+shortDefinition: >
+  Open protocol connecting AI hosts to external MCP servers exposing tools and resources through a standard client-server contract.
+whyItMatters:
+  - Reduces one-off integrations per SaaS product.
+  - Clarifies separation between host apps and capability servers.
+  - Growing ecosystem for devtools and data connectors.
+keyIdeas:
+  - Host
+  - Client
+  - Server
+  - Tools vs resources
+relatedConcepts:
+  - tool-calling
+  - function-calling
+  - enterprise-ai-patterns
+  - evaluation
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+MCP defines roles: the Host is your AI application (Cursor, Claude Desktop, custom agent); the Client inside the host speaks MCP; Servers provide capabilities. Tools are model-invokable actions with side effects—create ticket, run query. Resources are readable context—files, schema docs—usually fetched by the host without a model call. Standardizing here lets teams ship one MCP server many hosts consume, instead of N bespoke plugins. Evaluate MCP servers with the same security review as OAuth scopes—tools and resources map directly to data exfiltration surface.

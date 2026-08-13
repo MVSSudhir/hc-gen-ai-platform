@@ -1,0 +1,44 @@
+---
+id: time-to-fill
+slug: time-to-fill
+vertical: people-analytics
+contentType: metric
+title: Time to Fill
+description: "How long does it take to fill open roles?"
+domain: recruiting
+tags:
+  - recruiting
+analyticalTypes:
+  - descriptive
+  - diagnostic
+definition: >
+  Elapsed days from requisition approval to candidate acceptance for a hire.
+formula: >
+  Offer acceptance date minus requisition open date
+businessQuestion: >
+  How long does it take to fill open roles?
+interpretation: >
+  Longer time-to-fill for critical roles increases vacancy cost and team workload.
+recommendedSegments:
+  - Business unit
+  - Geography
+  - Function
+  - Grade or level
+relatedMetrics:
+  - open-requisition-age
+  - offer-acceptance-rate
+commonPitfalls: >
+  Using requisition create date instead of approval; excluding weekends inconsistently.
+visualization:
+  - Trend over time
+  - Segment comparison
+  - Distribution
+businessDecisions: >
+  Adjust sourcing spend, recruiter capacity, and process redesign priorities.
+relatedUseCases: []
+relatedDashboards: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---

@@ -1,0 +1,31 @@
+# Pipeline B — Human Capital AI research queries.
+# Loaded by the research pipeline (Phase 7); never hard-code queries in code.
+# Frequency is configurable; quality matters more than volume.
+schedule:
+  runsPerWeek: 2
+
+human_capital_ai:
+  talent_acquisition:
+    - "generative AI recruiting implementation"
+    - "AI candidate matching enterprise"
+    - "candidate rediscovery AI case study"
+    - "AI interview intelligence enterprise"
+    - "recruiter copilot implementation case study"
+  talent_management:
+    - "AI internal mobility implementation"
+    - "AI skills intelligence enterprise"
+    - "AI skills inference case study"
+    - "talent marketplace AI implementation"
+  learning:
+    - "AI personalized learning enterprise implementation"
+    - "generative AI learning content case study"
+  performance:
+    - "AI performance review assistant enterprise"
+    - "manager copilot AI implementation"
+  employee_experience:
+    - "generative AI HR assistant implementation"
+    - "employee AI assistant case study"
+    - "HR knowledge assistant RAG enterprise"
+  workforce:
+    - "AI workforce planning implementation"
+    - "workforce AI scenario analysis enterprise"

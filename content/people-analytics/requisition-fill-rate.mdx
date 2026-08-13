@@ -1,0 +1,44 @@
+---
+id: requisition-fill-rate
+slug: requisition-fill-rate
+vertical: people-analytics
+contentType: metric
+title: Requisition Fill Rate
+description: "Are we closing the reqs we open?"
+domain: recruiting
+tags:
+  - recruiting
+analyticalTypes:
+  - descriptive
+  - diagnostic
+definition: >
+  The share of approved requisitions filled within a target period.
+formula: >
+  Reqs filled within target / Total approved reqs
+businessQuestion: >
+  Are we closing the reqs we open?
+interpretation: >
+  Low fill rates with high cancellations may signal planning churn.
+recommendedSegments:
+  - Business unit
+  - Geography
+  - Function
+  - Grade or level
+relatedMetrics:
+  - time-to-fill
+  - open-requisition-age
+commonPitfalls: >
+  Opening duplicate reqs for the same headcount.
+visualization:
+  - Trend over time
+  - Segment comparison
+  - Distribution
+businessDecisions: >
+  Workforce plan alignment, recruiter capacity, and hiring manager accountability.
+relatedUseCases: []
+relatedDashboards: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---

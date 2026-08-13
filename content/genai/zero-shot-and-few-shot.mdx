@@ -1,0 +1,35 @@
+---
+id: zero-shot-and-few-shot
+slug: zero-shot-and-few-shot
+vertical: genai
+contentType: concept
+title: Zero-Shot and Few-Shot Learning
+description: Zero-shot asks the model to perform a task with instructions alone; few-shot adds inline examples that demonstrate the desired input-output pattern.
+tags:
+  - foundations
+learningOrder: 6
+shortDefinition: >
+  Zero-shot asks the model to perform a task with instructions alone; few-shot adds inline examples that demonstrate the desired input-output pattern.
+whyItMatters:
+  - Examples often beat longer prose for format adherence.
+  - Few-shot is a cheap alternative to fine-tuning for narrow formats.
+  - Example selection affects bias and failure modes.
+keyIdeas:
+  - Instruction-only
+  - In-context examples
+  - Pattern transfer
+relatedConcepts:
+  - prompting
+  - chain-of-thought
+  - fine-tuning
+  - dspy-signatures
+  - system-prompts
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Start zero-shot when the task is familiar to the model and the output schema is simple. Add few-shot examples when you need a particular JSON shape, classification boundary, or tone. Curate examples for edge cases you care about—not only happy paths. In RAG pipelines, few-shot can teach citation format or refusal behaviour without retraining weights. Watch token budget: five good examples may outperform twenty mediocre ones. Rotate examples when eval slices show bias toward particular vendors, geographies, or customer tiers represented disproportionately in demonstrations.

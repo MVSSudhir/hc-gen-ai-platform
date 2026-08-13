@@ -1,0 +1,36 @@
+---
+id: fine-tuning
+slug: fine-tuning
+vertical: genai
+contentType: concept
+title: Fine-Tuning
+description: "Continued training on curated data to adapt model behaviour—tone, format, domain language—without replacing base reasoning capabilities."
+tags:
+  - models
+learningOrder: 15
+shortDefinition: >
+  Continued training on curated data to adapt model behaviour—tone, format, domain language—without replacing base reasoning capabilities.
+whyItMatters:
+  - Useful when prompt engineering plateaus on consistent style or classification.
+  - Not a substitute for RAG when facts change frequently.
+  - "Requires data governance, eval splits, and regression monitoring."
+keyIdeas:
+  - Behaviour adaptation
+  - SFT and preference tuning
+  - Data quality
+relatedConcepts:
+  - parametric-memory-limits
+  - open-vs-closed
+  - evaluation
+  - rag
+  - structured-output
+  - transformers
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Fine-tuning updates weights to absorb repetitive patterns: support macros, internal taxonomy, formatting habits. It is the wrong first lever for dynamic knowledge—retrieve instead. Successful fine-tunes start with a narrow objective, hundreds to thousands of high-quality examples, and held-out evals that mirror production failures. Treat fine-tuned models like any dependency: version datasets, track eval metrics, and plan rollback when base models improve. Maintain a canonical eval set of production failures before each fine-tune; if the new checkpoint wins on style but loses on facts, reject it.

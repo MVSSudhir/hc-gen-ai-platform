@@ -1,0 +1,35 @@
+---
+id: ragas
+slug: ragas
+vertical: genai
+contentType: concept
+title: RAGAS
+description: "Reference-free RAG evaluation suite measuring faithfulness, answer relevance, context precision, and context recall with LLM-assisted scoring."
+tags:
+  - evaluation
+learningOrder: 54
+shortDefinition: >
+  Reference-free RAG evaluation suite measuring faithfulness, answer relevance, context precision, and context recall with LLM-assisted scoring.
+whyItMatters:
+  - Turns RAG quality into CI-friendly metrics without expensive gold labels for every claim.
+  - Separates retrieval failures from generation hallucinations.
+  - Pairs well with Phoenix-style tracing for production samples.
+keyIdeas:
+  - Faithfulness
+  - Answer relevance
+  - Context precision/recall
+relatedConcepts:
+  - rag-evaluation
+  - faithfulness-and-relevance
+  - g-eval
+  - observability
+  - advanced-rag
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+RAGAS scores RAG traces end-to-end: did retrieved context contain the answer, did the reply stick to that context, and did it address the question. Use it on golden sets and sampled production logs—not as a single vanity number, but sliced by corpus and language. Treat dips after index rebuilds or prompt edits as release blockers. Combine RAGAS with human spot-checks on high-risk domains; automated scores miss subtle policy misreads. Wire failures into prompt and retrieval tickets with the offending chunks attached so engineers fix causes, not symptoms.

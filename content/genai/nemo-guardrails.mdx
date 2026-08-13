@@ -1,0 +1,35 @@
+---
+id: nemo-guardrails
+slug: nemo-guardrails
+vertical: genai
+contentType: concept
+title: NeMo Guardrails
+description: "NVIDIA NeMo Guardrails-style programmable rails: declarative Colang policies, dialog boundaries, and tool constraints around LLM calls."
+tags:
+  - guardrails
+learningOrder: 81
+shortDefinition: >
+  NVIDIA NeMo Guardrails-style programmable rails: declarative Colang policies, dialog boundaries, and tool constraints around LLM calls.
+whyItMatters:
+  - Express multi-step safety and compliance logic explicitly.
+  - Version control conversation policies like code.
+  - Integrates with enterprise approval patterns and deterministic workflows.
+keyIdeas:
+  - Colang policies
+  - Dialog flows
+  - Tool allowlists
+  - Programmable rails
+relatedConcepts:
+  - guardrails
+  - llama-guard
+  - enterprise-ai-patterns
+  - multimodal-models
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+NeMo Guardrails encodes allowed intents, forbidden topics, and escalation paths in a policy language executed around each model turn. Rails can force retrieval before factual claims or block tool calls pending validation—useful when prompt-only pleading is un-auditable. Prefer rails for regulated dialogues and agent handoffs that must stay inside explicit configuration. Simulate flows with recorded transcripts before launch; edge transitions hide in static policy docs. Review blocked and allowed samples with policy owners so false positives do not quietly kill legitimate workflows.

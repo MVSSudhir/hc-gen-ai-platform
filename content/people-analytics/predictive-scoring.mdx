@@ -1,0 +1,39 @@
+---
+id: predictive-scoring
+slug: predictive-scoring
+vertical: people-analytics
+contentType: analytical-method
+title: Predictive Scoring
+description: Assign probability scores to individuals or reqs for proactive action.
+domain: attrition
+tags:
+  - attrition
+analyticalTypes:
+  - predictive
+  - prescriptive
+purpose: >
+  Assign probability scores to individuals or reqs for proactive action.
+businessQuestions:
+  - "Which employees have elevated flight risk?"
+  - "Which reqs are likely to miss fill SLA?"
+dataRequired:
+  - Clean employee event history
+  - Consistent definitions
+  - Adequate sample size
+method: >
+  Train classification models on historical outcomes; deploy scores with explainability.
+exampleApplication: >
+  Flight risk scores routed to managers with suggested retention actions.
+interpretation: >
+  Scores prioritize attention; human review remains essential for fairness.
+limitations: >
+  Model bias; over-reliance on scores without manager context.
+relatedMetrics:
+  - voluntary-attrition-rate
+  - open-requisition-age
+relatedUseCases: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---

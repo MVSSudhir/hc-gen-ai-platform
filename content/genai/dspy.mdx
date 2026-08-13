@@ -1,0 +1,35 @@
+---
+id: dspy
+slug: dspy
+vertical: genai
+contentType: concept
+title: DSPy
+description: "Framework treating LLM pipelines as optimizable programs—signatures, modules, and teleprompters search for better prompts and weights."
+tags:
+  - optimization
+learningOrder: 29
+shortDefinition: >
+  Framework treating LLM pipelines as optimizable programs—signatures, modules, and teleprompters search for better prompts and weights.
+whyItMatters:
+  - Moves prompt tuning from artisanal guessing toward measurable compilation.
+  - Pairs naturally with RAG and agent module graphs.
+  - Reported industry case studies show strong gains on structured tasks.
+keyIdeas:
+  - Programs not strings
+  - Automatic prompt search
+  - Composable modules
+relatedConcepts:
+  - dspy-signatures
+  - teleprompters
+  - programmatic-prompting
+  - evaluation
+  - chat-history-management
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+DSPy reframes prompts as parameters in a program you can optimize. Define signatures for inputs and outputs, compose retrieval or tool modules, then let teleprompters propose improved instructions or demonstrations against a metric. It shines when you have labeled or LLM-judge evals and repetitive pipeline structure. Start small—one signature, one metric—before compiling entire agent graphs. Invest in metric design before optimizer runs—a teleprompter will happily overfit a vague score that rewards verbosity over correctness. Ship only after eval gates pass on representative production failures.

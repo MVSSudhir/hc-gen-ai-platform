@@ -1,0 +1,35 @@
+---
+id: privacy-and-data
+slug: privacy-and-data
+vertical: genai
+contentType: concept
+title: Privacy and Data Handling
+description: "Policies for PII redaction, data residency, retention, and customer consent when sending text to models."
+tags:
+  - enterprise-ai
+learningOrder: 86
+shortDefinition: >
+  Policies for PII redaction, data residency, retention, and customer consent when sending text to models.
+whyItMatters:
+  - Legal exposure if prompts leak regulated data to vendors.
+  - Determines self-host vs API and regional routing.
+  - Deletion requests must propagate through indexes.
+keyIdeas:
+  - PII redaction
+  - Data residency
+  - Retention and deletion
+relatedConcepts:
+  - open-vs-closed
+  - knowledge-bases
+  - ai-governance
+  - enterprise-ai-patterns
+  - model-routing
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Privacy engineering classifies fields, redacts before inference, and documents subprocessors. Use regional endpoints or local models for sensitive workloads. Encrypt vectors and metadata at rest; tie chunk ACLs to source systems. Run DPIAs when adding new tools that exfiltrate context to third parties. Review subprocessors whenever enabling new MCP servers or browser tools; data paths multiply faster than security inventories update. Validate changes on production-like eval slices before rollout. Automate redaction tests whenever new connectors ingest email or ticket bodies.

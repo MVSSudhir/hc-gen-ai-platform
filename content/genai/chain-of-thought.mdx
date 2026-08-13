@@ -1,0 +1,36 @@
+---
+id: chain-of-thought
+slug: chain-of-thought
+vertical: genai
+contentType: concept
+title: Chain of Thought
+description: "Prompting the model to expose intermediate reasoning steps before the final answer, improving accuracy on multi-step problems."
+tags:
+  - foundations
+learningOrder: 7
+shortDefinition: >
+  Prompting the model to expose intermediate reasoning steps before the final answer, improving accuracy on multi-step problems.
+whyItMatters:
+  - "Improves math, logic, and planning tasks on capable models."
+  - Makes failures debuggable when reasoning is visible.
+  - "Must be balanced against latency, cost, and leakage of internal reasoning."
+keyIdeas:
+  - Step-by-step reasoning
+  - Decomposition
+  - Visible intermediates
+relatedConcepts:
+  - prompting
+  - planning-and-reasoning
+  - agents
+  - evaluation
+  - zero-shot-and-few-shot
+  - tokenization
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Chain-of-thought asks the model to think stepwise—often triggered by phrases like "think step by step" or by providing exemplars that show reasoning traces. Use it when tasks require arithmetic, constraint satisfaction, or multi-hop inference. In user-facing products, you may keep reasoning in a hidden scratchpad and show only the conclusion. Pair CoT with evaluation: wrong intermediate steps reveal prompt gaps faster than wrong final answers alone. Log hidden reasoning in secure traces for internal debugging, but expose only conclusions and citations in customer-facing surfaces unless policy allows more.

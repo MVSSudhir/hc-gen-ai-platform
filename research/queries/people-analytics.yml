@@ -1,0 +1,28 @@
+# Pipeline C — People Analytics research queries.
+# Loaded by the research pipeline (Phase 7); never hard-code queries in code.
+schedule:
+  runsPerWeek: 1
+
+people_analytics:
+  workforce:
+    - "people analytics workforce planning case study"
+    - "workforce analytics implementation"
+    - "headcount analytics reporting practice"
+  attrition:
+    - "employee attrition analytics case study"
+    - "people analytics attrition implementation"
+    - "attrition driver analysis case study"
+  recruiting:
+    - "recruitment analytics case study"
+    - "hiring funnel analytics implementation"
+    - "quality of hire measurement case study"
+  compensation:
+    - "compensation analytics implementation"
+    - "pay equity analysis case study"
+  reporting:
+    - "people analytics dashboard case study"
+    - "HR analytics dashboard implementation"
+    - "executive workforce dashboard design"
+  methods:
+    - "people analytics cohort analysis application"
+    - "workforce predictive analytics case study"

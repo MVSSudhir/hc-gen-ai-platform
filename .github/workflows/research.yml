@@ -1,0 +1,31 @@
+name: Research
+
+# Phase 7 — automated research pipeline. Currently a stub:
+# the pipeline is scaffolded (research/ + lib/research/) but not implemented.
+#
+# When activated:
+#   - enable the schedule below (frequency is configurable; start with
+#     2 runs/week for Human Capital AI, 1/week for People Analytics)
+#   - output goes ONLY to research/candidates/ for human review
+#   - nothing is ever published automatically
+#
+# Secrets required when active: SEARCH_API_KEY, LLM_API_KEY
+# (GitHub Actions secrets only — never exposed to the public site).
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "0 3 * * 1,4"   # Human Capital AI research
+  #   - cron: "0 3 * * 2"     # People Analytics research
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Research pipeline not yet active
+        run: |
+          echo "The research pipeline is scaffolded but not implemented."
+          echo "See research/README.md for the intended design."
+          exit 0

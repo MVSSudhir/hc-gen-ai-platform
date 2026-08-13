@@ -1,0 +1,36 @@
+---
+id: structure-aware-chunking
+slug: structure-aware-chunking
+vertical: genai
+contentType: concept
+title: Structure-Aware Chunking
+description: "Splitting along document structure—headings, tables, slides, code blocks—so chunks respect logical units and metadata."
+tags:
+  - embeddings
+learningOrder: 41
+shortDefinition: >
+  Splitting along document structure—headings, tables, slides, code blocks—so chunks respect logical units and metadata.
+whyItMatters:
+  - "Essential for wikis, APIs docs, and regulated manuals."
+  - Enables citations that point to sections users recognize.
+  - Pairs with GraphRAG for hierarchical knowledge.
+keyIdeas:
+  - Heading paths
+  - Table row units
+  - Code function blocks
+relatedConcepts:
+  - chunking
+  - semantic-chunking
+  - knowledge-bases
+  - graphrag
+  - late-chunking
+  - multimodal-embeddings
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Structure-aware chunking uses HTML, Markdown, PDF outlines, or OCR layout to never split mid-table or mid-procedure step. Compared to semantic chunking, it trusts author structure over statistical breakpoints—superior for SOPs and reference docs. Compared to late chunking, it is cheaper and easier to explain in audits. Attach breadcrumb metadata (H1 > H2 > H3) to each chunk for filtering and user-facing citations. Sync heading metadata when wikis rename sections; stale breadcrumbs confuse both users and ACL filters tied to path prefixes.

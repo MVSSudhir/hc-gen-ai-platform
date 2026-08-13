@@ -1,0 +1,36 @@
+---
+id: faithfulness-and-relevance
+slug: faithfulness-and-relevance
+vertical: genai
+contentType: concept
+title: Faithfulness and Relevance
+description: Faithfulness measures whether answers are supported by context; relevance measures whether they address the question.
+tags:
+  - evaluation
+learningOrder: 76
+shortDefinition: >
+  Faithfulness measures whether answers are supported by context; relevance measures whether they address the question.
+whyItMatters:
+  - Orthogonal failures need different fixes—prompt vs retrieval.
+  - "Core RAG metrics alongside Precision@K and Recall@K."
+  - Drive abstention policies when either score is low.
+keyIdeas:
+  - Supported claims
+  - Question alignment
+  - Abstention thresholds
+relatedConcepts:
+  - rag-evaluation
+  - g-eval
+  - hallucination
+  - citation-and-grounding
+  - observability
+  - guardrails
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+An answer can be faithful but irrelevant (quotes the right doc but misses the question) or relevant but unfaithful (addresses the ask using invented facts). Score both separately with judges or NLI models. Set production thresholds to trigger shorter replies, extra retrieval, or human escalation. Report slice metrics in dashboards executives actually read. Tune abstention copy for low scores—users respond better to scoped "here is what we know" answers than empty errors. Ship only after eval gates pass on representative production failures.

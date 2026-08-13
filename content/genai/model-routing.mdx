@@ -1,0 +1,34 @@
+---
+id: model-routing
+slug: model-routing
+vertical: genai
+contentType: concept
+title: Model Routing
+description: "Sending requests to different models by task complexity, cost tier, latency SLO, or data sensitivity."
+tags:
+  - enterprise-ai
+learningOrder: 87
+shortDefinition: >
+  Sending requests to different models by task complexity, cost tier, latency SLO, or data sensitivity.
+whyItMatters:
+  - Balances frontier quality with economical small models.
+  - Enables graceful degradation during outages.
+  - Requires eval coverage on every route.
+keyIdeas:
+  - Task classifiers
+  - Fallback chains
+  - Cost-aware routing
+relatedConcepts:
+  - model-families
+  - cost-optimization
+  - enterprise-ai-patterns
+  - privacy-and-data
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Model routers classify intents—"simple FAQ" to small model, "contract analysis" to large—and enforce data policies routing PII-heavy jobs on-prem. Implement shadow mode when introducing routes; compare win rates before cutting over. Log routing decisions for finance chargebacks and debugging quality dips. Shadow-test new routes on sampled production queries before flipping traffic; routing regressions are subtle until finance sees refunds. Validate changes on production-like eval slices before rollout. Expose routing rationale in internal traces for debugging quality complaints quickly. Expose routing rationale in internal traces for debugging quality complaints quickly.

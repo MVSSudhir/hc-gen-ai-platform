@@ -1,0 +1,35 @@
+---
+id: agent-memory-tiers
+slug: agent-memory-tiers
+vertical: genai
+contentType: concept
+title: Agent Memory Tiers
+description: "Layered memory—working buffer, episodic summaries, long-term vector store—for agents across sessions and tasks."
+tags:
+  - agents
+learningOrder: 67
+shortDefinition: >
+  Layered memory—working buffer, episodic summaries, long-term vector store—for agents across sessions and tasks.
+whyItMatters:
+  - Prevents agents from forgetting constraints mid-run.
+  - Separates ephemeral tool output from durable user facts.
+  - Must respect privacy retention and deletion requests.
+keyIdeas:
+  - Working memory
+  - Episodic summaries
+  - Long-term retrieval
+relatedConcepts:
+  - memory-patterns
+  - vector-databases
+  - chat-history-management
+  - autogen
+  - tool-calling
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Tier agent memory like human workflows: scratchpad for current plan, session summary for recent context, vector store for user preferences and past cases. Write policies for promotion—what may move from working to long-term memory. Encrypt and tenant-isolate stores. On user delete requests, purge all tiers consistently. Test GDPR deletion end-to-end across tiers quarterly; episodic summaries often linger after users expect full erasure. Validate changes on production-like eval slices before rollout. Run quarterly deletion drills across working, episodic, and long-term stores together.

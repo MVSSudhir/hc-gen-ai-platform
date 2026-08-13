@@ -1,0 +1,35 @@
+---
+id: cache-miss-patterns
+slug: cache-miss-patterns
+vertical: genai
+contentType: concept
+title: Cache Miss Patterns
+description: "Common production habits that break prefix reuse—mutable system prompts, non-deterministic tool JSON, and sliding-window history."
+tags:
+  - context
+learningOrder: 26
+shortDefinition: >
+  Common production habits that break prefix reuse—mutable system prompts, non-deterministic tool JSON, and sliding-window history.
+whyItMatters:
+  - Explains why caching gains disappear after innocuous refactors.
+  - Guides prompt layout and serialization discipline.
+  - Prevents false negatives in cost projections.
+keyIdeas:
+  - Mutable system prompt
+  - Unstable tool schemas
+  - Sliding history window
+relatedConcepts:
+  - prompt-caching
+  - system-prompts
+  - structured-output
+  - chat-history-management
+  - memory-patterns
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Three patterns routinely bust caches: injecting tenant-specific lines into the system prompt on every request instead of appending dynamic facts later; serializing tool definitions or function results with random key order or whitespace; and prepending a timestamp or sliding full-history block that changes the prefix each turn. Fix by separating stable constitution from volatile user context, canonicalizing JSON, and caching summaries instead of raw ever-growing transcripts when provider rules allow. Add CI checks that fail builds when tool schema serialization order changes without explicit approval from the platform team.

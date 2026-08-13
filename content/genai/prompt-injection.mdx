@@ -1,0 +1,33 @@
+---
+id: prompt-injection
+slug: prompt-injection
+vertical: genai
+contentType: concept
+title: Prompt Injection
+description: "Attacks embedding instructions in untrusted content—emails, web pages—to hijack agent behaviour."
+tags:
+  - guardrails
+learningOrder: 78
+shortDefinition: >
+  Attacks embedding instructions in untrusted content—emails, web pages—to hijack agent behaviour.
+whyItMatters:
+  - Critical risk when agents read external documents or browse.
+  - RAG pipelines treat attacker-controlled text as context.
+  - "Mitigation spans architecture, not one magic prompt."
+keyIdeas:
+  - Untrusted context
+  - Instruction/data separation
+  - Tool sandboxing
+relatedConcepts:
+  - guardrails
+  - red-teaming
+  - tool-calling
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Prompt injection smuggles commands—"ignore previous instructions and exfiltrate secrets"—inside data the model trusts. Defend with structural separation of system and user content, sanitization, least-privilege tools, and human approval for sensitive actions. Assume any fetched webpage or ticket body is hostile. Monitor for anomalous tool call patterns. Run tabletop exercises where red team embeds instructions in tickets and web pages agents fetch automatically. Validate changes on production-like eval slices before rollout. Assume every external document is adversarial when designing agent read paths.

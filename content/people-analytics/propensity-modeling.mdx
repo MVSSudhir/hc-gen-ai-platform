@@ -1,0 +1,39 @@
+---
+id: propensity-modeling
+slug: propensity-modeling
+vertical: people-analytics
+contentType: analytical-method
+title: Propensity Modeling
+description: Estimate likelihood of an employee taking an action such as promotion or training completion.
+domain: talent
+tags:
+  - talent
+analyticalTypes:
+  - predictive
+  - prescriptive
+purpose: >
+  Estimate likelihood of an employee taking an action such as promotion or training completion.
+businessQuestions:
+  - "Who is likely to complete leadership training?"
+  - "Which candidates are likely to accept offers?"
+dataRequired:
+  - Clean employee event history
+  - Consistent definitions
+  - Adequate sample size
+method: >
+  Logistic models or gradient boosting on historical action data.
+exampleApplication: >
+  Target manager referrals for roles where internal employees show high promotion propensity.
+interpretation: >
+  Propensity scores improve targeting efficiency of HR programs.
+limitations: >
+  Class imbalance; stale training data after policy changes.
+relatedMetrics:
+  - learning-completion-rate
+  - offer-acceptance-rate
+relatedUseCases: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---

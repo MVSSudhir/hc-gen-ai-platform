@@ -1,0 +1,35 @@
+---
+id: structured-output
+slug: structured-output
+vertical: genai
+contentType: concept
+title: Structured Output
+description: "Constraining model responses to machine-parseable schemas—JSON, enums, or tool-call payloads—so downstream code can act reliably."
+tags:
+  - models
+learningOrder: 14
+shortDefinition: >
+  Constraining model responses to machine-parseable schemas—JSON, enums, or tool-call payloads—so downstream code can act reliably.
+whyItMatters:
+  - Agents and workflows break when free-form text replaces typed interfaces.
+  - Schema validation catches model mistakes before side effects.
+  - Pairs with function-calling and programmatic orchestration.
+keyIdeas:
+  - JSON schema
+  - Constrained decoding
+  - Repair loops
+relatedConcepts:
+  - function-calling
+  - temperature
+  - guardrails
+  - evaluation
+  - fine-tuning
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Structured output turns LLM responses into API contracts. Use provider-native JSON modes or tool schemas when available; otherwise specify schemas in prompts with examples and validate with a strict parser. On failure, retry with the validation error as feedback—a small repair loop beats hoping the model self-corrects. Non-deterministic tool JSON serialization order can bust prefix caches; stable key ordering matters in optimized pipelines. Prefer schema validation at the boundary over regex scraping of markdown fences, which breaks silently when models add polite preamble.

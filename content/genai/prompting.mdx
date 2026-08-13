@@ -1,0 +1,36 @@
+---
+id: prompting
+slug: prompting
+vertical: genai
+contentType: concept
+title: Prompting
+description: "Structuring instructions, context, and examples so the model produces useful, controllable outputs for a specific task."
+tags:
+  - foundations
+learningOrder: 4
+shortDefinition: >
+  Structuring instructions, context, and examples so the model produces useful, controllable outputs for a specific task.
+whyItMatters:
+  - Prompt quality often moves outcomes more than swapping model families.
+  - "Clear roles, constraints, and formats reduce ambiguity and rework."
+  - Prompting is the first control surface before orchestration gets complex.
+keyIdeas:
+  - Task specification
+  - Constraints
+  - Format control
+  - Iteration
+relatedConcepts:
+  - system-prompts
+  - zero-shot-and-few-shot
+  - chain-of-thought
+  - structured-output
+  - parametric-memory-limits
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+A prompt is a specification, not incantation. State the role, audience, task, constraints, and desired output shape. When results fail, change one variable at a time—examples, tone, delimiters, or evidence ordering. Strong prompting is editorial judgment applied to model inputs. In production, prompts belong in version control with evaluation sets so changes are measurable, not tribal knowledge buried in a dashboard text box. Pair prompt changes with regression evals on representative failures from support logs, not only on cherry-picked success stories from the lab.

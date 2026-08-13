@@ -1,0 +1,33 @@
+---
+id: hybrid-search
+slug: hybrid-search
+vertical: genai
+contentType: concept
+title: Hybrid Search
+description: Combining dense vector retrieval with sparse lexical methods (BM25) for robust recall across paraphrase and keyword queries.
+tags:
+  - retrieval
+learningOrder: 44
+shortDefinition: >
+  Combining dense vector retrieval with sparse lexical methods (BM25) for robust recall across paraphrase and keyword queries.
+whyItMatters:
+  - "Fixes semantic search blind spots on SKUs, error codes, and names."
+  - Industry default for production RAG indexes.
+  - Fusion weight tuning belongs in eval harnesses.
+keyIdeas:
+  - BM25 plus vectors
+  - Reciprocal rank fusion
+  - Weighted blending
+relatedConcepts:
+  - semantic-search
+  - reranking
+  - indexing-strategies
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Hybrid search runs lexical and semantic retrievers in parallel, then fuses rankings—RRF or learned weights. Lexical wins on exact tokens; semantic wins on conceptual questions. Calibrate on real query logs, not only synthetic paraphrases. Expose fusion parameters to observability so on-call engineers can diagnose sudden recall drops after index rebuilds. A/B test fusion weights on live traffic with guardrail metrics; offline Recall@K alone misses user preference for exact matches. Ship only after eval gates pass on representative production failures.

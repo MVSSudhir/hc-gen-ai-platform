@@ -1,0 +1,36 @@
+---
+id: lost-in-the-middle
+slug: lost-in-the-middle
+vertical: genai
+contentType: concept
+title: Lost in the Middle
+description: "Models often under-use information placed in the middle of long contexts, overweighting beginnings and endings."
+tags:
+  - transformers
+learningOrder: 21
+shortDefinition: >
+  Models often under-use information placed in the middle of long contexts, overweighting beginnings and endings.
+whyItMatters:
+  - Bad chunk ordering in RAG silently drops the best evidence.
+  - Long-context windows do not guarantee equal recall across positions.
+  - "Drives reranking, re-ordering, and context-engineering tactics."
+keyIdeas:
+  - U-shaped attention bias
+  - Evidence placement
+  - Re-ranking mitigations
+relatedConcepts:
+  - attention
+  - long-context
+  - reranking
+  - context-engineering
+  - scaling-laws
+  - context-window
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Research and production logs show models miss facts buried mid-prompt even when within the nominal context limit. Mitigate by reranking retrieved chunks, placing the highest-value passages last before the question, summarizing mid-context noise, or using map-reduce patterns over segments. Treat "fits in context window" as necessary, not sufficient—ordering and compression matter as much as retrieval score. Add automated tests that place gold facts in middle positions of synthetic contexts to catch ordering regressions before release. Ship only after eval gates pass on representative production failures.

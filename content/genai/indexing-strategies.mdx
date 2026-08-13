@@ -1,0 +1,35 @@
+---
+id: indexing-strategies
+slug: indexing-strategies
+vertical: genai
+contentType: concept
+title: Indexing Strategies
+description: "How and when you chunk, embed, and refresh corpora—batch, incremental, multi-version, and metadata-rich pipelines."
+tags:
+  - retrieval
+learningOrder: 49
+shortDefinition: >
+  How and when you chunk, embed, and refresh corpora—batch, incremental, multi-version, and metadata-rich pipelines.
+whyItMatters:
+  - Stale indexes cause confident wrong answers.
+  - Incremental updates must respect deletes and permission changes.
+  - Reindex plans interact with embedding model upgrades.
+keyIdeas:
+  - Incremental sync
+  - Versioned embeddings
+  - ACL propagation
+relatedConcepts:
+  - vector-databases
+  - knowledge-bases
+  - chunking
+  - hyde
+  - rag
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Indexing strategy spans ingestion schedulers, change-data-capture from wikis, tombstoning deleted pages, and blue-green index cuts when embedding models change. Tag chunks with source timestamps so the generator can prefer fresh policy. For regulated domains, log who indexed what and when. Pair indexing SLAs with RAG eval dashboards—recall drops often trace to broken crawlers, not model regressions. Define SLOs for index freshness per corpus tier—marketing pages and pricing tables need tighter bounds than archived research PDFs. Ship only after eval gates pass on representative production failures.

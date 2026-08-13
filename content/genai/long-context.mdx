@@ -1,0 +1,36 @@
+---
+id: long-context
+slug: long-context
+vertical: genai
+contentType: concept
+title: Long Context
+description: "Models and techniques supporting hundred-thousand to million-token inputs—whole codebases, corpora, or transcripts in one shot."
+tags:
+  - context
+learningOrder: 24
+shortDefinition: >
+  Models and techniques supporting hundred-thousand to million-token inputs—whole codebases, corpora, or transcripts in one shot.
+whyItMatters:
+  - "Enables naive \"dump everything\" prototypes that need production refinement."
+  - Changes chunking tradeoffs—not every pipeline needs small chunks.
+  - Still requires attention to recall bias and cost.
+keyIdeas:
+  - Extended windows
+  - Map-reduce fallback
+  - Cost at scale
+relatedConcepts:
+  - context-window
+  - lost-in-the-middle
+  - chunking
+  - summarization-patterns
+  - context-engineering
+  - prompt-caching
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Long-context models tempt teams to skip retrieval entirely. That works for bounded corpora and exploratory analysis; it fails on updating knowledge bases and strict citation needs. Hybrid patterns prevail: retrieve candidates cheaply, then let a long-context model read a curated superset. Monitor spend—linear input growth hurts—and validate that answers use distant passages, not only headers. Benchmark end-to-end faithfulness on whole-corpus prompts versus retrieve-then-read; long context is not a free substitute for search. Ship only after eval gates pass on representative production failures.

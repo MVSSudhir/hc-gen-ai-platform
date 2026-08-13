@@ -1,0 +1,45 @@
+---
+id: attrition-rate
+slug: attrition-rate
+vertical: people-analytics
+contentType: metric
+title: Attrition Rate
+description: "What share of our workforce left during this period?"
+domain: attrition
+tags:
+  - attrition
+analyticalTypes:
+  - descriptive
+  - diagnostic
+  - predictive
+definition: >
+  The proportion of employees who exit the organization in a period.
+formula: >
+  (Separations during period / Average headcount) × 100
+businessQuestion: >
+  What share of our workforce left during this period?
+interpretation: >
+  Compare voluntary and involuntary components before reacting; segment by tenure and function.
+recommendedSegments:
+  - Business unit
+  - Geography
+  - Function
+  - Grade or level
+relatedMetrics:
+  - voluntary-attrition-rate
+  - regrettable-attrition-rate
+commonPitfalls: >
+  Annualizing partial-period data without seasonality adjustment; excluding probationary exits without documenting.
+visualization:
+  - Trend over time
+  - Segment comparison
+  - Distribution
+businessDecisions: >
+  Retention program investment, manager development, and compensation review timing.
+relatedUseCases: []
+relatedDashboards: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---

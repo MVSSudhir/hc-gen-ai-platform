@@ -1,0 +1,35 @@
+---
+id: rag-architecture
+slug: rag-architecture
+vertical: genai
+contentType: concept
+title: RAG Architecture
+description: "End-to-end components—ingestion, indexing, retrieval, reranking, generation, citation, and feedback loops—for grounded QA."
+tags:
+  - rag
+learningOrder: 51
+shortDefinition: >
+  End-to-end components—ingestion, indexing, retrieval, reranking, generation, citation, and feedback loops—for grounded QA.
+whyItMatters:
+  - "Clarifies ownership across data, ML, and app teams."
+  - "Surfaces failure points: crawl, chunk, retrieve, generate."
+  - "Enables SLOs per stage instead of blaming \"the model.\""
+keyIdeas:
+  - Ingestion pipeline
+  - Retrieval stack
+  - Generation policy
+relatedConcepts:
+  - rag
+  - advanced-rag
+  - knowledge-bases
+  - observability
+  - citation-and-grounding
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+A production RAG architecture diagrams data sources, chunkers, embedders, vector store, query router, reranker, prompt assembler, LLM, citation formatter, and logging bus. Each stage gets metrics: ingestion lag, Recall@K, rerank latency, faithfulness score, user thumbs-down rate. Design explicit refusal when retrieval confidence is low—better than synthesizing from parametric memory alone. Run game days that kill individual stages—embedder, vector store, reranker—to verify graceful degradation messages reach users clearly. Ship only after eval gates pass on representative production failures.

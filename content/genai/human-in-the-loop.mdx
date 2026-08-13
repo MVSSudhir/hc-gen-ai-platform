@@ -1,0 +1,35 @@
+---
+id: human-in-the-loop
+slug: human-in-the-loop
+vertical: genai
+contentType: concept
+title: Human in the Loop
+description: "Checkpointing agent actions for human approval, correction, or escalation before irreversible side effects."
+tags:
+  - agents
+learningOrder: 62
+shortDefinition: >
+  Checkpointing agent actions for human approval, correction, or escalation before irreversible side effects.
+whyItMatters:
+  - "Required for payments, access changes, and customer-facing sends."
+  - Collects training signal and trust for gradual automation.
+  - Legal and brand risk control—not optional in enterprise.
+keyIdeas:
+  - Approval gates
+  - Escalation
+  - Feedback capture
+relatedConcepts:
+  - agents
+  - guardrails
+  - enterprise-ai-patterns
+  - planning-and-reasoning
+  - multi-agent-systems
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Human-in-the-loop pauses before sending emails, modifying records, or committing purchases. UI surfaces proposed actions with diffs and citations. Log accept, edit, and reject outcomes to improve prompts and routing. Automate only steps whose error rate and blast radius you have quantified—keep humans on the long tail. Measure time-to-approve and edit rates; rising edits signal prompts or tools need refinement before removing the human gate. Ship only after eval gates pass on representative production failures.

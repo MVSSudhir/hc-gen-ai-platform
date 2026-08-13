@@ -1,0 +1,36 @@
+---
+id: rag-evaluation
+slug: rag-evaluation
+vertical: genai
+contentType: concept
+title: RAG Evaluation
+description: "Metrics and datasets for retrieval quality and generation faithfulness—Precision@K, Recall@K, faithfulness, answer relevance."
+tags:
+  - rag
+learningOrder: 53
+shortDefinition: >
+  Metrics and datasets for retrieval quality and generation faithfulness—Precision@K, Recall@K, faithfulness, answer relevance.
+whyItMatters:
+  - Prevents shipping RAG that reads well but cites wrong docs.
+  - Separates retriever regressions from generator issues.
+  - Feeds continuous improvement and DSPy optimization.
+keyIdeas:
+  - "Precision@K"
+  - "Recall@K"
+  - Faithfulness
+  - Answer relevance
+relatedConcepts:
+  - faithfulness-and-relevance
+  - g-eval
+  - ragas
+  - evaluation
+  - citation-and-grounding
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Evaluate retrieval with Precision@K (how many top hits are relevant) and Recall@K (whether gold passages appear). Evaluate generation with faithfulness (claims supported by context) and answer relevance (addresses the question). Build sets from real support tickets and doc updates. Run evals on every index rebuild, prompt change, and model route swap—aggregate scores hide catastrophic slices. Slice eval dashboards by language, product SKU, and doc vintage; aggregate faithfulness hides failures on your riskiest segments. Ship only after eval gates pass on representative production failures.

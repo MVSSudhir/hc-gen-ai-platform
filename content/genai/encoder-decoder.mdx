@@ -1,0 +1,35 @@
+---
+id: encoder-decoder
+slug: encoder-decoder
+vertical: genai
+contentType: concept
+title: Encoder-Decoder Architecture
+description: "Two-stack design: encoder builds bidirectional representations; decoder generates output autoregressively—common in translation and some RAG rerankers."
+tags:
+  - transformers
+learningOrder: 18
+shortDefinition: >
+  Two-stack design: encoder builds bidirectional representations; decoder generates output autoregressively—common in translation and some RAG rerankers.
+whyItMatters:
+  - Separates understanding input from generating output.
+  - Explains model choices for summarization vs embedding.
+  - Helps pick cross-encoders for reranking.
+keyIdeas:
+  - Bidirectional encoding
+  - Autoregressive decoding
+  - Cross-attention
+relatedConcepts:
+  - transformers
+  - reranking
+  - summarization-patterns
+  - attention
+  - pretraining-vs-inference
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Encoder-decoder models read the full input with bidirectional context, then decode an answer token by token. They remain strong for seq2seq tasks like summarization and structured transformation. Pure decoders dominate chat LLMs because a single stack simplifies scaling. In retrieval pipelines, encoders (or encoder stacks inside cross-encoders) score query-document pairs with richer interaction than bi-encoders alone. Pick encoder-heavy models when pairwise scoring dominates latency; pick decoder-only chat models when generation flexibility matters more. Ship only after eval gates pass on representative production failures.

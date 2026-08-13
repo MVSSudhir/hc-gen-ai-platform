@@ -1,0 +1,34 @@
+---
+id: temperature
+slug: temperature
+vertical: genai
+contentType: concept
+title: Temperature and Sampling
+description: "Sampling controls how randomly the model picks next tokens—low temperature for deterministic tasks, higher for creative variation."
+tags:
+  - models
+learningOrder: 13
+shortDefinition: >
+  Sampling controls how randomly the model picks next tokens—low temperature for deterministic tasks, higher for creative variation.
+whyItMatters:
+  - "Wrong temperature causes flaky JSON, inconsistent classifications, and test drift."
+  - Tool-calling pipelines usually need low temperature for parseable outputs.
+  - Creative features may benefit from moderate randomness with guardrails.
+keyIdeas:
+  - Top-p and top-k
+  - Determinism vs diversity
+  - Task-specific defaults
+relatedConcepts:
+  - structured-output
+  - evaluation
+  - function-calling
+  - open-vs-closed
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+Temperature scales logits before sampling: near zero, the model almost always picks the highest-probability token; higher values spread probability mass. For extraction, routing, and function calls, use low temperature and fixed seeds where supported. For brainstorming copy, moderate temperature adds variety. Document defaults per use case and lock them in eval harnesses—changing temperature without re-running benchmarks is a common source of silent quality drift. Record sampling parameters in trace metadata so on-call engineers can distinguish quality regressions from intentional configuration drift after deploys.

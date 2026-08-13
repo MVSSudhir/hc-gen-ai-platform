@@ -1,0 +1,34 @@
+---
+id: graphrag
+slug: graphrag
+vertical: genai
+contentType: concept
+title: GraphRAG
+description: Combining knowledge graphs or community summaries with vector retrieval for global and relational questions over corpora.
+tags:
+  - rag
+learningOrder: 57
+shortDefinition: >
+  Combining knowledge graphs or community summaries with vector retrieval for global and relational questions over corpora.
+whyItMatters:
+  - "Helps \"themes across the whole library\" queries flat RAG misses."
+  - Surfaces entity relationships and community structure.
+  - Higher offline indexing cost than flat chunk indexes.
+keyIdeas:
+  - Entity graphs
+  - Community summaries
+  - Global search
+relatedConcepts:
+  - advanced-rag
+  - structure-aware-chunking
+  - knowledge-bases
+  - refrag
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+GraphRAG extracts entities and relations, builds community summaries, and answers both local detail questions and global thematic ones. It shines on investigative workflows—connecting people, projects, and events across documents. Operate it as a batch indexing investment with clear query routing: use graph paths for synthesis questions, vector search for pinpoint fact lookup. Route queries explicitly—graph summaries for thematic questions, vector search for pinpoint facts—to avoid paying graph costs on every request. Ship only after eval gates pass on representative production failures.

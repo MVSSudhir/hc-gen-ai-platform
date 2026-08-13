@@ -1,0 +1,39 @@
+---
+id: regression-analysis
+slug: regression-analysis
+vertical: people-analytics
+contentType: analytical-method
+title: Regression Analysis
+description: Estimate relationships between workforce drivers and outcomes while controlling for confounders.
+domain: attrition
+tags:
+  - attrition
+analyticalTypes:
+  - diagnostic
+  - predictive
+purpose: >
+  Estimate relationships between workforce drivers and outcomes while controlling for confounders.
+businessQuestions:
+  - "What factors predict voluntary attrition?"
+  - "Which variables explain pay variance?"
+dataRequired:
+  - Clean employee event history
+  - Consistent definitions
+  - Adequate sample size
+method: >
+  Fit regression models with outcome and predictor variables; interpret coefficients and significance.
+exampleApplication: >
+  Model flight risk using tenure, compa-ratio, engagement, and mobility history.
+interpretation: >
+  Significant coefficients suggest association, not always causation without experiment design.
+limitations: >
+  Multicollinearity among predictors; omitted variable bias.
+relatedMetrics:
+  - voluntary-attrition-rate
+  - compa-ratio
+relatedUseCases: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---

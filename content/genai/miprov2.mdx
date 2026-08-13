@@ -1,0 +1,35 @@
+---
+id: miprov2
+slug: miprov2
+vertical: genai
+contentType: concept
+title: MiPROv2
+description: DSPy teleprompter using model-informed proposal and search to refine instructions and few-shot sets efficiently.
+tags:
+  - optimization
+learningOrder: 33
+shortDefinition: >
+  DSPy teleprompter using model-informed proposal and search to refine instructions and few-shot sets efficiently.
+whyItMatters:
+  - Often faster than brute-force prompt grids on structured pipelines.
+  - Leverages LM feedback to propose edits.
+  - Popular starting point for DSPy optimization workflows.
+keyIdeas:
+  - Guided proposal
+  - Instruction refinement
+  - Demonstration selection
+relatedConcepts:
+  - teleprompters
+  - dspy
+  - zero-shot-and-few-shot
+  - gepa
+  - programmatic-prompting
+relatedImplementations: []
+relatedMetrics: []
+status: published
+demo: false
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
+
+MiPROv2 iteratively proposes instruction and demo changes informed by model behaviour on errors. It works well on classification, extraction, and multi-hop RAG modules with crisp metrics. Provide diverse failure examples in the train set so proposals target real edges. Compare against a strong manual baseline—optimization should beat human defaults, not merely beat garbage. Seed MiPROv2 with human-written baselines that already pass minimum bars; optimizers should refine strong starting points, not salvage broken pipelines. Ship only after eval gates pass on representative production failures.

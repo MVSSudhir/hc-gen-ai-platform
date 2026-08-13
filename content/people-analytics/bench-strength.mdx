@@ -1,0 +1,44 @@
+---
+id: bench-strength
+slug: bench-strength
+vertical: people-analytics
+contentType: metric
+title: Bench Strength
+description: "Do we have backup coverage for key roles?"
+domain: talent
+tags:
+  - talent
+analyticalTypes:
+  - descriptive
+  - diagnostic
+definition: >
+  The depth of ready-now and ready-soon successors for critical roles.
+formula: >
+  Count or percentage of critical roles with at least one ready successor
+businessQuestion: >
+  Do we have backup coverage for key roles?
+interpretation: >
+  Low bench strength increases business continuity risk.
+recommendedSegments:
+  - Business unit
+  - Geography
+  - Function
+  - Grade or level
+relatedMetrics:
+  - succession-coverage-ratio
+  - critical-role-vacancy-days
+commonPitfalls: >
+  Counting unvetted nominees without readiness criteria.
+visualization:
+  - Trend over time
+  - Segment comparison
+  - Distribution
+businessDecisions: >
+  Succession program funding, development assignments, and external hiring.
+relatedUseCases: []
+relatedDashboards: []
+status: published
+demo: true
+createdAt: 2026-08-09
+updatedAt: 2026-08-09
+---
