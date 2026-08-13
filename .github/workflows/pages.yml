@@ -1,7 +1,10 @@
 name: GitHub Pages
 
 # Public site at https://<user>.github.io/<repo>/ — no Cloudflare account needed.
-# After the first run, if the URL 404s: Settings → Pages → Source: GitHub Actions.
+#
+# First-time setup (required once, GitHub does not allow Actions to do this):
+#   Settings → Pages → Build and deployment → Source: GitHub Actions
+# Then re-run this workflow.
 
 on:
   push:
@@ -45,8 +48,6 @@ jobs:
         run: touch out/.nojekyll
 
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
