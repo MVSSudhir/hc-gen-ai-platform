@@ -9,6 +9,9 @@ import { Badge } from "@/components/ui/badge";
 import { DemoNotice } from "@/components/ui/demo-notice";
 import { getItem, paItems } from "@/lib/content";
 import { referencedBy, relatedGroups } from "@/lib/relationships";
+import { Sources } from "@/components/content/sources";
+import { JsonLd } from "@/components/seo/json-ld";
+import { formatDate } from "@/lib/format";
 import { articleJsonLd, breadcrumbJsonLd, contentMetadata } from "@/lib/seo";
 import { labelize } from "@/lib/taxonomy";
 import type {
@@ -139,15 +142,7 @@ export default async function PaDetailPage({
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            articleJsonLd(paItem),
-            breadcrumbJsonLd(paItem),
-          ]),
-        }}
-      />
+      <JsonLd data={[articleJsonLd(paItem), breadcrumbJsonLd(paItem)]} />
       <Breadcrumbs
         crumbs={[
           { label: "Home", href: "/" },
@@ -190,7 +185,14 @@ export default async function PaDetailPage({
         </div>
       )}
 
-      <p className="mt-0 border-t border-border pt-6 text-xs text-faint">Updated {paItem.updatedAt}</p>
+      {"sources" in paItem && <Sources sources={paItem.sources} />}
+
+      <p className="mt-0 border-t border-border pt-6 text-xs text-faint">
+        Updated {formatDate(paItem.updatedAt)}
+        {"lastVerified" in paItem && paItem.lastVerified
+          ? ` · Last verified ${formatDate(paItem.lastVerified)}`
+          : ""}
+      </p>
 
       <RelatedContent
         groups={relatedGroups(paItem)}

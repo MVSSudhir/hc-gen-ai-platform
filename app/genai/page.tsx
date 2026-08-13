@@ -21,15 +21,32 @@ export default function GenaiIndexPage() {
       a.meta.title.localeCompare(b.meta.title),
   );
 
-  const stages = genaiLearningStages
+  const assigned = new Set<string>();
+  const staged = genaiLearningStages
     .map((stage) => {
       const topicSet = new Set<string>(stage.topics);
-      const items = concepts.filter(({ meta: c }) =>
-        c.tags.some((tag) => topicSet.has(tag)),
-      );
-      return { ...stage, items };
+      const items = concepts.filter(({ meta: c }) => {
+        if (assigned.has(c.slug)) return false;
+        return c.tags.some((tag) => topicSet.has(tag));
+      });
+      for (const item of items) assigned.add(item.meta.slug);
+      return { id: stage.id, title: stage.title, description: stage.description, items };
     })
     .filter((stage) => stage.items.length > 0);
+
+  const unmatched = concepts.filter(({ meta }) => !assigned.has(meta.slug));
+  const stages = unmatched.length
+    ? [
+        ...staged,
+        {
+          id: "more",
+          title: "More concepts",
+          description:
+            "Additional concepts not yet placed on the learning path.",
+          items: unmatched,
+        },
+      ]
+    : staged;
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-8 sm:py-14">

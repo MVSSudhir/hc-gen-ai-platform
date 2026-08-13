@@ -7,13 +7,17 @@
     "prebuild": "npm run validate:content && npm run validate:links && npm run build:search-index",
     "build": "next build",
     "start": "next start",
+    "preview": "wrangler dev",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "validate:content": "tsx scripts/validate-content.ts",
     "validate:links": "tsx scripts/validate-links.ts",
     "build:search-index": "tsx scripts/build-search-index.ts",
     "generate:content": "tsx scripts/generate-library-content.ts",
     "validate": "npm run lint && npm run typecheck && npm run validate:content && npm run validate:links"
+  },
+  "engines": {
+    "node": ">=24"
   },
   "dependencies": {
     "fuse.js": "^7.5.0",

@@ -24,8 +24,8 @@ export function FieldSection({
         )}
         {hasItems && (
           <ul className="max-w-2xl space-y-2.5 text-[1.0625rem] leading-[1.75]">
-            {items!.map((item) => (
-              <li key={item} className="flex gap-3">
+            {items!.map((item, index) => (
+              <li key={`${item}-${index}`} className="flex gap-3">
                 <span
                   aria-hidden="true"
                   className="mt-[12px] h-px w-3.5 shrink-0 bg-accent/55"

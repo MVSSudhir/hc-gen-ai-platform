@@ -114,6 +114,7 @@ export function HcaiExplorer({ items }: { items: HcaiSummary[] }) {
         <button
           type="button"
           aria-expanded={showFilters}
+          aria-controls="hcai-filters"
           onClick={() => setShowFilters((v) => !v)}
           className="inline-flex min-h-11 items-center text-sm text-muted transition-colors hover:text-foreground"
         >
@@ -128,7 +129,7 @@ export function HcaiExplorer({ items }: { items: HcaiSummary[] }) {
       </div>
 
       {showFilters && (
-        <div className="mb-8 space-y-4 border-b border-border pb-8">
+        <div id="hcai-filters" className="mb-8 space-y-4 border-b border-border pb-8">
           <FilterGroup
             label="Function"
             options={present.category}
@@ -173,7 +174,16 @@ export function HcaiExplorer({ items }: { items: HcaiSummary[] }) {
 
       {visible.length === 0 ? (
         <p className="py-12 text-center text-muted">
-          No use cases match the selected filters.
+          No use cases match the selected filters.{" "}
+          {activeCount > 0 && (
+            <button
+              type="button"
+              onClick={() => setFilters(emptyFilters)}
+              className="text-accent hover:text-accent-hover"
+            >
+              Clear filters
+            </button>
+          )}
         </p>
       ) : (
         <div className="panel overflow-hidden px-2 sm:px-3">

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ExternalLink } from "@/components/ui/external-link";
+import { withBasePath } from "@/lib/base-path";
 import { site } from "@/lib/site";
 
 const columns = [
@@ -16,6 +18,7 @@ const columns = [
       { label: "Work", href: "/work" },
       { label: "About", href: "/about" },
       { label: "Search", href: "/search" },
+      { label: "RSS", href: "/rss.xml" },
     ],
   },
 ];
@@ -43,12 +46,21 @@ export function SiteFooter() {
                 <ul className="space-y-2.5">
                   {column.links.map((link) => (
                     <li key={link.href}>
+                    {link.href.endsWith(".xml") ? (
+                      <a
+                        href={withBasePath(link.href)}
+                        className="inline-flex min-h-10 items-center text-ink-muted transition-colors hover:text-ink-foreground"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
                       <Link
                         href={link.href}
                         className="inline-flex min-h-10 items-center text-ink-muted transition-colors hover:text-ink-foreground"
                       >
                         {link.label}
                       </Link>
+                    )}
                     </li>
                   ))}
                 </ul>
@@ -67,24 +79,22 @@ export function SiteFooter() {
                 </li>
                 {site.linkedin && (
                   <li>
-                    <a
+                    <ExternalLink
                       href={site.linkedin}
-                      rel="noopener noreferrer"
                       className="inline-flex min-h-10 items-center text-ink-muted transition-colors hover:text-ink-foreground"
                     >
                       LinkedIn
-                    </a>
+                    </ExternalLink>
                   </li>
                 )}
                 {site.github && (
                   <li>
-                    <a
+                    <ExternalLink
                       href={site.github}
-                      rel="noopener noreferrer"
                       className="inline-flex min-h-10 items-center text-ink-muted transition-colors hover:text-ink-foreground"
                     >
                       GitHub
-                    </a>
+                    </ExternalLink>
                   </li>
                 )}
               </ul>
@@ -93,8 +103,9 @@ export function SiteFooter() {
         </div>
         <div className="mt-14 border-t border-ink-border pt-6">
           <p className="text-xs text-ink-muted">
-            © 2026 {site.name}. A personal knowledge platform for Generative
-            AI, Human Capital AI and People Analytics.
+            © {new Date().getFullYear()} {site.name}. A personal knowledge
+            platform for Generative AI, Human Capital AI and People Analytics.
+            No cookies, no analytics, no accounts.
           </p>
         </div>
       </div>

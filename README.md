@@ -36,10 +36,11 @@ Quality gates:
 
 ```bash
 npm run lint              # ESLint
-npm run typecheck         # TypeScript (run `npx next typegen` once first)
+npm run typecheck         # TypeScript (generates route types, then tsc)
 npm run validate:content  # schema, taxonomy, cross-reference validation
 npm run validate:links    # internal link validation
 npm run build             # runs all validation via prebuild, then static build
+npm run preview           # serve the production export via Wrangler (after build)
 ```
 
 A failed content validation **blocks the build** — invalid content can never
@@ -69,21 +70,24 @@ GitHub) and set `SITE_URL` / `CONTACT_EMAIL` (see `.env.example`). In GitHub,
 configure repository **variables** `SITE_URL` and `CONTACT_EMAIL` for CI
 builds.
 
-## Deployment (Cloudflare)
+## Deployment
 
-The site deploys as static assets via Wrangler — no server runtime. Security
-headers (CSP, HSTS, etc.) are applied through `public/_headers`.
+The site is static HTML. For now it publishes to **GitHub Pages** so you can
+open it on any phone or computer:
 
-Manual deploy:
+**https://mvssudhir.github.io/hc-gen-ai-platform/**
+
+Pushing to `main` (or this workflow on the current branch) runs
+`.github/workflows/pages.yml`. If the first deploy 404s, set
+**Settings → Pages → Source** to **GitHub Actions**.
+
+Optional later: Cloudflare Workers via `.github/workflows/deploy.yml` (needs
+secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`). Manual:
 
 ```bash
 npm run build
-npx wrangler deploy   # requires a Cloudflare account; wrangler will prompt to log in
+npx wrangler deploy
 ```
-
-Automatic deploy: pushing to `main` runs `.github/workflows/deploy.yml`.
-Configure repository **secrets** `CLOUDFLARE_API_TOKEN` and
-`CLOUDFLARE_ACCOUNT_ID`.
 
 ## Research system (scaffolded, inactive)
 

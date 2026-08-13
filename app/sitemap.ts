@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
   const staticPages = [
     "",
     "/genai",
@@ -15,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/search",
   ].map((path) => ({
     url: `${site.url}${path}`,
+    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : 0.8,
   }));

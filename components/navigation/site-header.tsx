@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useId, useRef, useState } from "react";
 import { site } from "@/lib/site";
 
 const navItems = [
@@ -33,24 +33,56 @@ function SearchIcon() {
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [menuPath, setMenuPath] = useState(pathname);
+  const menuId = useId();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const onInk = pathname === "/";
+
+  if (menuPath !== pathname) {
+    setMenuPath(pathname);
+    setOpen(false);
+  }
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(`${href}/`);
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    closeButtonRef.current?.focus();
     return () => {
       document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
     };
   }, [open]);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "k") {
+        return;
+      }
+      const target = event.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+      event.preventDefault();
+      router.push("/search");
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [router]);
 
   return (
     <header
@@ -76,6 +108,7 @@ export function SiteHeader() {
               <li key={item.href}>
                 <Link
                   href={item.href}
+                  aria-current={isActive(item.href) ? "page" : undefined}
                   className={`relative text-sm transition-colors ${
                     isActive(item.href)
                       ? onInk
@@ -100,6 +133,7 @@ export function SiteHeader() {
               <Link
                 href="/search"
                 aria-label="Search"
+                title="Search (⌘K)"
                 className={`flex h-10 w-10 items-center justify-center rounded-md transition-colors ${
                   onInk
                     ? "text-ink-muted hover:bg-ink-soft hover:text-ink-foreground"
@@ -125,9 +159,10 @@ export function SiteHeader() {
             <SearchIcon />
           </Link>
           <button
+            ref={closeButtonRef}
             type="button"
             aria-expanded={open}
-            aria-controls="mobile-nav"
+            aria-controls={menuId}
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
             className={`flex h-11 w-11 items-center justify-center rounded-md transition-colors ${
@@ -165,7 +200,7 @@ export function SiteHeader() {
 
       {open && (
         <nav
-          id="mobile-nav"
+          id={menuId}
           aria-label="Primary mobile"
           className={`max-h-[min(70vh,28rem)] overflow-y-auto border-t md:hidden ${
             onInk
@@ -178,6 +213,7 @@ export function SiteHeader() {
               <li key={item.href}>
                 <Link
                   href={item.href}
+                  aria-current={isActive(item.href) ? "page" : undefined}
                   onClick={() => setOpen(false)}
                   className={`block min-h-12 py-3.5 text-base ${
                     isActive(item.href)

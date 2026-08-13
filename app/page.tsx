@@ -2,60 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   genaiConcepts,
-  hcaiUseCases,
   itemPath,
   latestItems,
+  hcaiUseCases,
   paItems,
   workProjects,
 } from "@/lib/content";
+import { exploreByProblem } from "@/lib/explore";
 import { personJsonLd, websiteJsonLd } from "@/lib/seo";
 import { site, verticalMeta } from "@/lib/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { ExternalLink } from "@/components/ui/external-link";
 
 export const metadata: Metadata = {
   title: `${site.name} — ${site.tagline}`,
   description: site.description,
   alternates: { canonical: site.url },
 };
-
-const exploreByProblem = [
-  {
-    problem: "I want to improve recruiting",
-    links: [
-      {
-        label: "Candidate Rediscovery",
-        href: "/human-capital-ai/candidate-rediscovery",
-      },
-      {
-        label: "Candidate Matching",
-        href: "/human-capital-ai/candidate-matching",
-      },
-      { label: "Time to Fill", href: "/people-analytics/time-to-fill" },
-      { label: "Quality of Hire", href: "/people-analytics/quality-of-hire" },
-    ],
-  },
-  {
-    problem: "I want to understand attrition",
-    links: [
-      { label: "Attrition Rate", href: "/people-analytics/attrition-rate" },
-      { label: "Cohort Analysis", href: "/people-analytics/cohort-analysis" },
-      {
-        label: "Executive Workforce Dashboard",
-        href: "/people-analytics/executive-workforce-dashboard",
-      },
-    ],
-  },
-  {
-    problem: "I want AI to help employees get answers",
-    links: [
-      {
-        label: "HR Knowledge Assistant",
-        href: "/human-capital-ai/hr-knowledge-assistant",
-      },
-      { label: "RAG", href: "/genai/rag" },
-      { label: "Semantic Search", href: "/genai/semantic-search" },
-    ],
-  },
-];
 
 function Container({ children }: { children: React.ReactNode }) {
   return <div className="mx-auto max-w-5xl px-4 sm:px-8">{children}</div>;
@@ -99,12 +62,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([personJsonLd(), websiteJsonLd()]),
-        }}
-      />
+      <JsonLd data={[personJsonLd(), websiteJsonLd()]} />
 
       {/* Hero — full-bleed ink plane; brand is the dominant signal */}
       <section className="relative overflow-hidden bg-ink text-ink-foreground">
@@ -342,22 +300,20 @@ export default function HomePage() {
                   {site.email}
                 </a>
                 {site.linkedin && (
-                  <a
+                  <ExternalLink
                     href={site.linkedin}
-                    rel="noopener noreferrer"
                     className="text-ink-muted transition-colors hover:text-ink-foreground"
                   >
                     LinkedIn
-                  </a>
+                  </ExternalLink>
                 )}
                 {site.github && (
-                  <a
+                  <ExternalLink
                     href={site.github}
-                    rel="noopener noreferrer"
                     className="text-ink-muted transition-colors hover:text-ink-foreground"
                   >
                     GitHub
-                  </a>
+                  </ExternalLink>
                 )}
                 <Link
                   href="/about"

@@ -111,6 +111,7 @@ export function PaExplorer({ items }: { items: PaSummary[] }) {
         <button
           type="button"
           aria-expanded={showFilters}
+          aria-controls="pa-filters"
           onClick={() => setShowFilters((v) => !v)}
           className="inline-flex min-h-11 items-center text-sm text-muted transition-colors hover:text-foreground"
         >
@@ -125,7 +126,7 @@ export function PaExplorer({ items }: { items: PaSummary[] }) {
       </div>
 
       {showFilters && (
-        <div className="mb-8 space-y-4 border-b border-border pb-8">
+        <div id="pa-filters" className="mb-8 space-y-4 border-b border-border pb-8">
           <FilterGroup
             label="Domain"
             options={present.domain}
@@ -158,7 +159,16 @@ export function PaExplorer({ items }: { items: PaSummary[] }) {
 
       {visible.length === 0 && (
         <p className="py-12 text-center text-muted">
-          Nothing matches the selected filters.
+          Nothing matches the selected filters.{" "}
+          {activeCount > 0 && (
+            <button
+              type="button"
+              onClick={() => setFilters(emptyFilters)}
+              className="text-accent hover:text-accent-hover"
+            >
+              Clear filters
+            </button>
+          )}
         </p>
       )}
 

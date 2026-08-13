@@ -10,10 +10,19 @@ export const metadata: Metadata = pageMetadata({
   path: "/search",
 });
 
+function SearchFallback() {
+  return (
+    <div>
+      <div className="h-10 border-b border-border-strong" />
+      <p className="mt-10 text-sm text-faint">Loading search…</p>
+    </div>
+  );
+}
+
 export default function SearchPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
-      <Suspense>
+      <Suspense fallback={<SearchFallback />}>
         <SearchClient />
       </Suspense>
     </div>
