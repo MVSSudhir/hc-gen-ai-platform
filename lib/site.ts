@@ -6,7 +6,10 @@
  */
 
 function envUrl(): string {
-  const raw = (process.env.SITE_URL || "https://example.com").trim();
+  const raw = (
+    process.env.SITE_URL ||
+    "https://mvssudhir.github.io/hc-gen-ai-platform"
+  ).trim();
   return raw.replace(/\/+$/, "");
 }
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ExternalLink } from "@/components/ui/external-link";
+import { withBasePath } from "@/lib/base-path";
 import { site } from "@/lib/site";
 
 const columns = [
@@ -47,7 +48,7 @@ export function SiteFooter() {
                     <li key={link.href}>
                     {link.href.endsWith(".xml") ? (
                       <a
-                        href={link.href}
+                        href={withBasePath(link.href)}
                         className="inline-flex min-h-10 items-center text-ink-muted transition-colors hover:text-ink-foreground"
                       >
                         {link.label}
