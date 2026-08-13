@@ -6,6 +6,7 @@
    light and grain, not decoration.
 --------------------------------------------------------------------------- */
 :root {
+  color-scheme: light;
   --background: #f7f5f1;
   --surface: #efece6;
   --surface-elevated: #ffffff;

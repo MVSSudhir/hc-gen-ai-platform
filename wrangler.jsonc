@@ -5,8 +5,11 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "hc-gen-ai-platform",
   "compatibility_date": "2026-08-01",
+  "preview_urls": true,
   "assets": {
     "directory": "./out",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    // Next.js `trailingSlash: false` emits `/about.html`, not `/about/index.html`.
+    "html_handling": "drop-trailing-slash"
   }
 }

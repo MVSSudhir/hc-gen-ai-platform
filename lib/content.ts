@@ -151,3 +151,11 @@ export function latestItems(limit = 6): LoadedItem[] {
   }
   return picked;
 }
+
+/** Recently updated published items for RSS — no per-vertical cap. */
+export function feedItems(limit = 20): LoadedItem[] {
+  return publishedContent()
+    .filter((i) => i.meta.vertical !== "work")
+    .sort((a, b) => b.meta.updatedAt.localeCompare(a.meta.updatedAt))
+    .slice(0, limit);
+}

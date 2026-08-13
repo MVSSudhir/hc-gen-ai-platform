@@ -9,6 +9,9 @@ import { Badge } from "@/components/ui/badge";
 import { DemoNotice } from "@/components/ui/demo-notice";
 import { getItem, hcaiUseCases } from "@/lib/content";
 import { referencedBy, relatedGroups } from "@/lib/relationships";
+import { Sources } from "@/components/content/sources";
+import { JsonLd } from "@/components/seo/json-ld";
+import { formatDate } from "@/lib/format";
 import { articleJsonLd, breadcrumbJsonLd, contentMetadata } from "@/lib/seo";
 import { labelize } from "@/lib/taxonomy";
 
@@ -37,15 +40,7 @@ export default async function HcaiUseCasePage({
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            articleJsonLd(useCase),
-            breadcrumbJsonLd(useCase),
-          ]),
-        }}
-      />
+      <JsonLd data={[articleJsonLd(useCase), breadcrumbJsonLd(useCase)]} />
       <Breadcrumbs
         crumbs={[
           { label: "Home", href: "/" },
@@ -111,33 +106,13 @@ export default async function HcaiUseCasePage({
         </div>
       )}
 
-      {useCase.sources.length > 0 && (
-        <section className="grid gap-2 border-t border-border py-7 sm:grid-cols-[11rem_1fr] sm:gap-8">
-          <h2 className="eyebrow pt-1 text-muted">Sources</h2>
-          <ul className="max-w-2xl space-y-2 text-[15px]">
-            {useCase.sources.map((source) => (
-              <li key={source.id}>
-                <a
-                  href={source.url}
-                  rel="noopener noreferrer"
-                  className="text-accent underline decoration-border-strong underline-offset-3 hover:decoration-accent"
-                >
-                  {source.title}
-                </a>
-                <span className="text-muted">
-                  {" "}
-                  — {source.publisher}
-                  {source.publishedDate ? `, ${source.publishedDate}` : ""}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      <Sources sources={useCase.sources} />
 
       <p className="mt-0 border-t border-border pt-6 text-xs text-faint">
-        Updated {useCase.updatedAt}
-        {useCase.lastVerified ? ` · Last verified ${useCase.lastVerified}` : ""}
+        Updated {formatDate(useCase.updatedAt)}
+        {useCase.lastVerified
+          ? ` · Last verified ${formatDate(useCase.lastVerified)}`
+          : ""}
       </p>
 
       <RelatedContent

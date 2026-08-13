@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/content/page-header";
+import { JsonLd } from "@/components/seo/json-ld";
+import { ExternalLink } from "@/components/ui/external-link";
 import { pageMetadata, personJsonLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -27,10 +29,7 @@ const interests = [
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }}
-      />
+      <JsonLd data={personJsonLd()} />
       <PageHeader
         kicker="About"
         title={site.name}
@@ -62,22 +61,20 @@ export default function AboutPage() {
               {site.email}
             </a>
             {site.linkedin && (
-              <a
+              <ExternalLink
                 href={site.linkedin}
-                rel="noopener noreferrer"
                 className="text-ink-muted transition-colors hover:text-ink-foreground"
               >
                 LinkedIn
-              </a>
+              </ExternalLink>
             )}
             {site.github && (
-              <a
+              <ExternalLink
                 href={site.github}
-                rel="noopener noreferrer"
                 className="text-ink-muted transition-colors hover:text-ink-foreground"
               >
                 GitHub
-              </a>
+              </ExternalLink>
             )}
           </div>
         </section>

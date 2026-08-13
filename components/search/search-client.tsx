@@ -24,8 +24,10 @@ const verticalLabels: Record<string, string> = {
 export function SearchClient() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [query, setQuery] = useState(searchParams.get("q") ?? "");
+  const paramQuery = searchParams.get("q") ?? "";
+  const [query, setQuery] = useState(paramQuery);
   const [records, setRecords] = useState<SearchRecord[] | null>(null);
+  const [loadError, setLoadError] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -35,17 +37,37 @@ export function SearchClient() {
   useEffect(() => {
     let cancelled = false;
     fetch("/search-index.json")
-      .then((res) => res.json())
-      .then((data: SearchRecord[]) => {
-        if (!cancelled) setRecords(data);
+      .then((res) => {
+        if (!res.ok) throw new Error(`Search index ${res.status}`);
+        return res.json() as Promise<SearchRecord[]>;
+      })
+      .then((data) => {
+        if (!cancelled) {
+          setRecords(Array.isArray(data) ? data : []);
+          setLoadError(false);
+        }
       })
       .catch(() => {
-        if (!cancelled) setRecords([]);
+        if (!cancelled) {
+          setRecords([]);
+          setLoadError(true);
+        }
       });
     return () => {
       cancelled = true;
     };
   }, []);
+
+  useEffect(() => {
+    const trimmed = query.trim();
+    const id = window.setTimeout(() => {
+      const current = new URLSearchParams(window.location.search).get("q") ?? "";
+      if (trimmed === current) return;
+      const params = trimmed ? `?q=${encodeURIComponent(trimmed)}` : "";
+      router.replace(`/search${params}`, { scroll: false });
+    }, 250);
+    return () => window.clearTimeout(id);
+  }, [query, router]);
 
   const fuse = useMemo(() => {
     if (!records) return null;
@@ -79,12 +101,6 @@ export function SearchClient() {
     [results],
   );
 
-  const onChange = (value: string) => {
-    setQuery(value);
-    const params = value.trim() ? `?q=${encodeURIComponent(value.trim())}` : "";
-    router.replace(`/search${params}`, { scroll: false });
-  };
-
   return (
     <div>
       <label htmlFor="site-search" className="sr-only">
@@ -95,24 +111,35 @@ export function SearchClient() {
         id="site-search"
         type="search"
         value={query}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => setQuery(e.target.value)}
         placeholder="Search concepts, use cases, metrics…"
         autoComplete="off"
+        enterKeyHint="search"
         className="w-full border-b border-border-strong bg-transparent pb-3 font-serif text-2xl font-medium tracking-tight outline-none placeholder:text-faint focus:border-accent sm:text-3xl"
       />
 
       <div aria-live="polite" className="mt-10">
-        {query.trim().length >= 2 && records && results.length === 0 && (
+        {records === null && (
+          <p className="text-sm text-faint">Loading search index…</p>
+        )}
+
+        {loadError && (
           <p className="text-muted">
-            No results for “{query.trim()}”.
+            Search is unavailable right now. Try again in a moment, or browse
+            from the homepage.
           </p>
         )}
 
+        {query.trim().length >= 2 &&
+          records &&
+          !loadError &&
+          results.length === 0 && (
+            <p className="text-muted">No results for “{query.trim()}”.</p>
+          )}
+
         {grouped.map((group) => (
           <section key={group.vertical} className="mb-10">
-            <h2 className="mb-3 eyebrow text-muted">
-              {group.label}
-            </h2>
+            <h2 className="mb-3 eyebrow text-muted">{group.label}</h2>
             <ul>
               {group.items.map((item) => (
                 <li
@@ -137,7 +164,7 @@ export function SearchClient() {
           </section>
         ))}
 
-        {query.trim().length < 2 && (
+        {query.trim().length < 2 && !loadError && records && (
           <p className="text-sm text-faint">
             Search across GenAI concepts, Human Capital AI use cases, People
             Analytics metrics, methods and dashboards, and selected work.

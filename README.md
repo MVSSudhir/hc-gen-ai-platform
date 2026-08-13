@@ -36,10 +36,11 @@ Quality gates:
 
 ```bash
 npm run lint              # ESLint
-npm run typecheck         # TypeScript (run `npx next typegen` once first)
+npm run typecheck         # TypeScript (generates route types, then tsc)
 npm run validate:content  # schema, taxonomy, cross-reference validation
 npm run validate:links    # internal link validation
 npm run build             # runs all validation via prebuild, then static build
+npm run preview           # serve the production export via Wrangler (after build)
 ```
 
 A failed content validation **blocks the build** — invalid content can never

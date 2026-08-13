@@ -49,21 +49,25 @@ export default function WorkIndexPage() {
 
       <section>
         <h2 className="mb-4 eyebrow text-muted">Selected projects</h2>
-        <div className="panel overflow-hidden px-2 sm:px-3">
-          {projects.map(({ meta }) => (
-            <ItemCard
-              key={meta.slug}
-              href={itemPath(meta)}
-              title={meta.title}
-              description={meta.description}
-              footer={
-                meta.technology.length > 0 ? (
-                  <span>{meta.technology.join(" · ")}</span>
-                ) : undefined
-              }
-            />
-          ))}
-        </div>
+        {projects.length === 0 ? (
+          <p className="text-muted">No published projects yet.</p>
+        ) : (
+          <div className="panel overflow-hidden px-2 sm:px-3">
+            {projects.map(({ meta }) => (
+              <ItemCard
+                key={meta.slug}
+                href={itemPath(meta)}
+                title={meta.title}
+                description={meta.description}
+                footer={
+                  meta.technology.length > 0 ? (
+                    <span>{meta.technology.join(" · ")}</span>
+                  ) : undefined
+                }
+              />
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );

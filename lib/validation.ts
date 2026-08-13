@@ -186,6 +186,7 @@ export const workProjectSchema = z.object({
   featured: z.boolean().default(false),
 });
 
+export type Source = z.infer<typeof sourceSchema>;
 export type GenaiConcept = z.infer<typeof genaiConceptSchema>;
 export type HcaiUseCase = z.infer<typeof hcaiUseCaseSchema>;
 export type PaMetric = z.infer<typeof paMetricSchema>;

@@ -8,6 +8,8 @@ import { RelatedContent } from "@/components/related/related-content";
 import { DemoNotice } from "@/components/ui/demo-notice";
 import { getItem, workProjects } from "@/lib/content";
 import { relatedGroups } from "@/lib/relationships";
+import { JsonLd } from "@/components/seo/json-ld";
+import { formatDate } from "@/lib/format";
 import { articleJsonLd, breadcrumbJsonLd, contentMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
@@ -35,15 +37,7 @@ export default async function WorkProjectPage({
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            articleJsonLd(project),
-            breadcrumbJsonLd(project),
-          ]),
-        }}
-      />
+      <JsonLd data={[articleJsonLd(project), breadcrumbJsonLd(project)]} />
       <Breadcrumbs
         crumbs={[
           { label: "Home", href: "/" },
@@ -71,7 +65,9 @@ export default async function WorkProjectPage({
         </div>
       )}
 
-      <p className="mt-0 border-t border-border pt-6 text-xs text-faint">Updated {project.updatedAt}</p>
+      <p className="mt-0 border-t border-border pt-6 text-xs text-faint">
+        Updated {formatDate(project.updatedAt)}
+      </p>
 
       <RelatedContent groups={relatedGroups(project)} />
     </article>

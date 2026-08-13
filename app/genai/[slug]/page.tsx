@@ -10,6 +10,8 @@ import { DemoNotice } from "@/components/ui/demo-notice";
 import { genaiConcepts, getItem, itemPath } from "@/lib/content";
 import { genaiLearningStages } from "@/lib/learning-path";
 import { referencedBy, relatedGroups } from "@/lib/relationships";
+import { JsonLd } from "@/components/seo/json-ld";
+import { formatDate } from "@/lib/format";
 import { articleJsonLd, breadcrumbJsonLd, contentMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
@@ -50,15 +52,7 @@ export default async function GenaiConceptPage({
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            articleJsonLd(concept),
-            breadcrumbJsonLd(concept),
-          ]),
-        }}
-      />
+      <JsonLd data={[articleJsonLd(concept), breadcrumbJsonLd(concept)]} />
       <Breadcrumbs
         crumbs={[
           { label: "Home", href: "/" },
@@ -118,7 +112,7 @@ export default async function GenaiConceptPage({
       </nav>
 
       <p className="mt-8 text-xs text-faint">
-        Updated {concept.updatedAt}
+        Updated {formatDate(concept.updatedAt)}
         {" · "}
         <Link href="/genai" className="text-accent hover:text-accent-hover">
           Full learning path
