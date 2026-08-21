@@ -7,12 +7,24 @@ export const learningResourceKinds = [
 
 export type LearningResourceKind = (typeof learningResourceKinds)[number];
 
-export type LearningResource = {
+/** Shared identity for a source, before it is cited on a concept. */
+export type ResourceRef = {
   title: string;
   url: string;
   publisher: string;
   kind: LearningResourceKind;
 };
+
+/** A source cited on a concept — 1–10 per topic. */
+export type LearningResource = ResourceRef & {
+  /** Why this source belongs on this concept. */
+  why: string;
+  /** Terms from this concept the source actually covers. */
+  covers: string[];
+};
+
+export const MIN_TOPIC_RESOURCES = 1;
+export const MAX_TOPIC_RESOURCES = 10;
 
 const YOUTUBE_HOSTS = new Set([
   "youtube.com",

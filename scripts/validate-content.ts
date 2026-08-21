@@ -5,12 +5,12 @@
  *  - cross-references to slugs that do not exist
  *  - published items referencing unpublished items
  *  - updatedAt earlier than createdAt
- *  - GenAI concepts missing curated top resources
+ *  - GenAI concepts missing or invalid top resources (1–10, with why + covered terms)
  *
  * Runs in prebuild and CI; a failure blocks deployment.
  */
 import { loadAllContent } from "../lib/content";
-import { missingTopicResourceSlugs } from "../lib/genai-resources";
+import { missingTopicResourceSlugs, invalidTopicResourceSlugs } from "../lib/genai-resources";
 import { outgoingSlugs } from "../lib/relationships";
 
 let errors = 0;
@@ -56,6 +56,9 @@ try {
     .map((item) => item.meta.slug);
   for (const slug of missingTopicResourceSlugs(genaiSlugs)) {
     fail(`genai/${slug}: missing top resources`);
+  }
+  for (const label of invalidTopicResourceSlugs(genaiSlugs)) {
+    fail(`genai/${label}: each resource needs why + covered terms, and 1–10 items`);
   }
 } catch (error) {
   fail(error instanceof Error ? error.message : String(error));

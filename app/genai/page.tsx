@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/content/page-header";
-import { TopResources } from "@/components/content/top-resources";
 import { genaiConcepts, itemPath } from "@/lib/content";
-import { resourcesForTopic } from "@/lib/genai-resources";
 import { genaiLearningStages } from "@/lib/learning-path";
 import { pageMetadata } from "@/lib/seo";
 import { verticalMeta } from "@/lib/site";
@@ -38,7 +36,7 @@ export default function GenaiIndexPage() {
       <PageHeader
         kicker={meta.kicker}
         title="Generative AI"
-        description={`${meta.description} ${concepts.length} concepts across ${stages.length} learning stages — follow the path in order, or jump to what you need. Each concept includes top resources, including videos.`}
+        description={`${meta.description} ${concepts.length} concepts across ${stages.length} learning stages — follow the path in order, or jump to what you need. Each concept lists top resources with what they cover.`}
       />
 
       <nav
@@ -104,11 +102,6 @@ export default function GenaiIndexPage() {
                     <p className="mt-1.5 max-w-2xl text-[15px] leading-relaxed text-muted">
                       {concept.shortDefinition.trim()}
                     </p>
-                    <TopResources
-                      resources={resourcesForTopic(concept.slug)}
-                      layout="inline"
-                      embedVideos={false}
-                    />
                   </div>
                   <span
                     aria-hidden="true"
