@@ -1,11 +1,7 @@
-import { genaiLearningStages } from "./learning-path";
 import {
-  uniqueResources,
   type LearningResource,
   type LearningResourceKind,
 } from "./learning-resource";
-
-type StageId = (typeof genaiLearningStages)[number]["id"];
 
 function resource(
   kind: LearningResourceKind,
@@ -337,33 +333,6 @@ const llamaindexQuery = resource(
   "LlamaIndex",
 );
 
-const stageResources = {
-  foundations: [
-    karpathyIntro,
-    openaiPrompting,
-    anthropicPrompting,
-    gpt3Paper,
-  ],
-  "models-tokens": [karpathyTokenizer, openaiTokenizer, hfTokenizers],
-  transformers: [
-    threeb1bTransformers,
-    threeb1bAttention,
-    karpathyGpt,
-    attentionPaper,
-  ],
-  context: [anthropicCaching, openaiCaching, anthropicContextual, lostInMiddlePaper],
-  optimization: [dspyDocs, karpathyIntro],
-  embeddings: [openaiEmbeddings, pineconeEmbeddings],
-  retrieval: [pineconeHybrid, cohereRerank, colbertPaper, hydePaper],
-  rag: [ragPaper, llamaindexRag, langchainRag, anthropicContextual],
-  agents: [anthropicAgents, reactPaper, langgraphDocs, anthropicMultiAgent],
-  "tool-calling": [mcpWorkshop, mcpDocs, openaiTools],
-  evaluation: [ragasDocs, gevalPaper, langsmith],
-  guardrails: [owaspLlm, nemoDocs, llamaGuard],
-  multimodal: [openaiVision, openaiSpeech],
-  enterprise: [nistRmf, anthropicAgents, openaiCaching, litellmRouter],
-} satisfies Record<StageId, LearningResource[]>;
-
 const topicResources: Record<string, LearningResource[]> = {
   "what-is-genai": [karpathyIntro, openaiPrompting],
   llm: [karpathyIntro, anthropicAgents],
@@ -455,24 +424,75 @@ const topicResources: Record<string, LearningResource[]> = {
   "cost-optimization": [openaiCaching, anthropicCaching],
   "ai-governance": [nistRmf, owaspLlm],
   "responsible-ai": [nistRmf, owaspLlm],
+  "choosing-genai-certifications": [
+    resource(
+      "docs",
+      "AWS Certified AI Practitioner",
+      "https://aws.amazon.com/certification/certified-ai-practitioner/",
+      "AWS",
+    ),
+    resource(
+      "docs",
+      "Microsoft Azure AI Engineer Associate",
+      "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/",
+      "Microsoft",
+    ),
+    resource(
+      "docs",
+      "Google Cloud Generative AI Leader",
+      "https://cloud.google.com/learn/certification/generative-ai-leader",
+      "Google Cloud",
+    ),
+  ],
+  "aws-certified-ai-practitioner": [
+    resource(
+      "docs",
+      "AWS Certified AI Practitioner",
+      "https://aws.amazon.com/certification/certified-ai-practitioner/",
+      "AWS",
+    ),
+  ],
+  "microsoft-azure-ai-engineer": [
+    resource(
+      "docs",
+      "Azure AI Engineer Associate",
+      "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/",
+      "Microsoft",
+    ),
+    resource(
+      "docs",
+      "Exam study guide",
+      "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-102",
+      "Microsoft",
+    ),
+  ],
+  "google-cloud-genai-leader": [
+    resource(
+      "docs",
+      "Generative AI Leader certification",
+      "https://cloud.google.com/learn/certification/generative-ai-leader",
+      "Google Cloud",
+    ),
+  ],
+  "databricks-genai-engineer": [
+    resource(
+      "docs",
+      "Databricks Certified Generative AI Engineer Associate",
+      "https://www.databricks.com/learn/certification/genai-engineer-associate",
+      "Databricks",
+    ),
+  ],
+  "nvidia-nca-genl": [
+    resource(
+      "docs",
+      "NVIDIA-Certified Associate: Generative AI LLMs",
+      "https://www.nvidia.com/en-us/learn/certification/generative-ai-llm-associate/",
+      "NVIDIA",
+    ),
+  ],
 };
 
-export function resourcesForStage(stageId: string): LearningResource[] {
-  return stageResources[stageId as StageId] ?? [];
-}
-
-/** Topic-specific picks, then the parent stage list — de-duplicated. */
-export function resourcesForTopic(
-  slug: string,
-  stageId?: string,
-): LearningResource[] {
-  const specific = topicResources[slug] ?? [];
-  const inherited = stageId ? resourcesForStage(stageId) : [];
-  return uniqueResources([...specific, ...inherited]).slice(0, 5);
-}
-
-/** Resources unique to the topic — used as compact links on the learning path. */
-export function topicOnlyResources(slug: string): LearningResource[] {
+export function resourcesForTopic(slug: string): LearningResource[] {
   return topicResources[slug] ?? [];
 }
 

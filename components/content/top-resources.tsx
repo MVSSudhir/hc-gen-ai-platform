@@ -38,18 +38,17 @@ export function TopResources({
 }: {
   resources: LearningResource[];
   heading?: string;
-  layout?: "section" | "panel" | "inline";
+  layout?: "section" | "inline";
   embedVideos?: boolean;
 }) {
   if (!resources.length) return null;
 
-  const allVideos = embedVideos
+  const videos = embedVideos
     ? resources.flatMap((resource) => {
         const id = youtubeIdFromUrl(resource.url);
         return id ? [{ resource, id }] : [];
       })
     : [];
-  const videos = layout === "panel" ? allVideos.slice(0, 1) : allVideos;
 
   if (layout === "inline") {
     return (
@@ -96,15 +95,6 @@ export function TopResources({
       </ul>
     </div>
   );
-
-  if (layout === "panel") {
-    return (
-      <div className="panel mt-6 p-5 sm:p-6">
-        <h3 className="eyebrow text-muted">{heading}</h3>
-        <div className="mt-4">{body}</div>
-      </div>
-    );
-  }
 
   return (
     <section

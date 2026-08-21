@@ -46,17 +46,6 @@ export function youtubeIdFromUrl(url: string): string | undefined {
   }
 }
 
-export function uniqueResources(
-  resources: LearningResource[],
-): LearningResource[] {
-  const seen = new Set<string>();
-  return resources.filter((resource) => {
-    if (seen.has(resource.url)) return false;
-    seen.add(resource.url);
-    return true;
-  });
-}
-
 function videoId(value: string | undefined): string | undefined {
   if (!value) return undefined;
   return /^[a-zA-Z0-9_-]{11}$/.test(value) ? value : undefined;

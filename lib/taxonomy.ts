@@ -23,6 +23,7 @@ export const genaiTopics = [
   "multimodal",
   "enterprise-ai",
   "governance",
+  "certifications",
 ] as const;
 
 /** B — Human Capital AI functional categories */

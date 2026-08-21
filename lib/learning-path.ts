@@ -1,9 +1,10 @@
 /**
  * Curated GenAI learning path — aligned to applied GenAI engineering:
  * parametric limits → context & cost → programmatic prompting →
- * production RAG → agents → tools/MCP → evaluation & governance.
+ * production RAG → agents → tools/MCP → evaluation & governance →
+ * industry certifications.
  *
- * Top resources (docs, papers, YouTube) live in lib/genai-resources.ts.
+ * Concept-level top resources (docs, papers, YouTube) live in lib/genai-resources.ts.
  */
 export const genaiLearningStages = [
   {
@@ -103,5 +104,12 @@ export const genaiLearningStages = [
     description:
       "Ship reliably: architecture patterns, privacy, cost control and accountable AI use.",
     topics: ["enterprise-ai", "governance"] as const,
+  },
+  {
+    id: "certifications",
+    title: "Industry Certifications",
+    description:
+      "Vendor credentials that signal GenAI fluency — choose by role, cloud, and whether you need to use, build, or lead.",
+    topics: ["certifications"] as const,
   },
 ] as const;

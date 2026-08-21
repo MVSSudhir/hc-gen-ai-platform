@@ -1388,7 +1388,126 @@ export const genaiCurriculum: GenaiSeed[] = [
       "Beyond compliance checkbox—product differentiation.",
     ],
     keyIdeas: ["Fairness", "Transparency", "Accountability"],
-    relatedConcepts: ["ai-governance", "guardrails", "human-in-the-loop"],
+    relatedConcepts: ["ai-governance", "guardrails", "human-in-the-loop", "choosing-genai-certifications"],
     body: "Responsible AI translates values into tests: bias slices in evals, explainable citations, accessible UX, and clear limits on automation. Document known failure modes honestly in user-facing help. Empower users to report issues and receive transparent status. Pair technical guardrails with organizational accountability—named owners, not \"the model decided.\". Publish known limitations in customer-facing docs; transparency reduces harm when users understand where automation ends. Validate changes on production-like eval slices before rollout. Pair transparency docs with accessible escalation paths when automation fails users.",
+  },
+
+  // —— Industry Certifications ——
+  {
+    slug: "choosing-genai-certifications",
+    title: "Choosing Industry Certifications",
+    tag: "certifications",
+    shortDefinition:
+      "Pick a credential by the job you want—using AI, building LLM systems, or leading adoption—not by whichever exam is trending this quarter.",
+    whyItMatters: [
+      "Certs signal cloud and role fit; they do not replace production evals or shipped work.",
+      "Foundational exams suit PMs and HR leaders; associate exams suit builders.",
+      "Vendor lock-in is a feature: employers often hire for a stack.",
+    ],
+    keyIdeas: ["Role fit", "Vendor vs platform-neutral", "Skill over badge"],
+    relatedConcepts: [
+      "responsible-ai",
+      "enterprise-ai-patterns",
+      "aws-certified-ai-practitioner",
+    ],
+    body: "Industry certifications are a map, not a destination. Start from the work: if you specify use cases and buy software, a practitioner or leader exam is enough. If you design RAG, agents, and serving, choose an associate engineer credential on the cloud you already use. Read the official exam guide—domains, sample tasks, recertification window—before paying. Treat study as structured review of this learning path: models, retrieval, evaluation, and governance show up on every serious outline. Keep a portfolio of grounded demos alongside the badge; hiring managers ask what you shipped when the exam version expires.",
+  },
+  {
+    slug: "aws-certified-ai-practitioner",
+    title: "AWS Certified AI Practitioner",
+    tag: "certifications",
+    shortDefinition:
+      "Foundational AWS credential covering AI, ML and generative AI concepts, use cases, and responsible use on Amazon Web Services—without requiring you to build models.",
+    whyItMatters: [
+      "Common first AI badge for people already in the AWS ecosystem.",
+      "Emphasizes when to use Bedrock and related services versus classical ML.",
+      "Pairs well with later builder certs such as Machine Learning Engineer - Associate.",
+    ],
+    keyIdeas: ["Foundational exam", "AWS AI services", "Responsible AI on AWS"],
+    relatedConcepts: [
+      "choosing-genai-certifications",
+      "what-is-genai",
+      "microsoft-azure-ai-engineer",
+    ],
+    body: "The AWS Certified AI Practitioner (AIF-C01) is aimed at people who use AI/ML on AWS more than they implement training pipelines. Expect questions on problem framing, foundation models, prompt patterns, RAG at a conceptual level, cost and security, and responsible AI. It is not a substitute for shipping retrieval quality or agent evals. Prepare from the official exam guide and AWS Skill Builder paths, then map each domain back to concepts on this site. Recertification is time-bounded; treat the badge as proof you can talk the AWS AI vocabulary with product and security partners.",
+  },
+  {
+    slug: "microsoft-azure-ai-engineer",
+    title: "Microsoft Azure AI Engineer Associate",
+    tag: "certifications",
+    shortDefinition:
+      "Associate credential for engineers who design and implement Azure AI solutions—generative AI, agents, search, vision, and language—using Azure AI services.",
+    whyItMatters: [
+      "Signals you can build on Azure AI Foundry, Azure OpenAI, and Azure AI Search.",
+      "Covers responsible AI and solution operations, not only prompts.",
+      "Fits enterprise teams standardized on Microsoft 365 and Azure.",
+    ],
+    keyIdeas: ["Azure AI services", "Generative and agentic solutions", "Responsible AI"],
+    relatedConcepts: [
+      "choosing-genai-certifications",
+      "rag",
+      "agents",
+      "aws-certified-ai-practitioner",
+    ],
+    body: "Azure AI Engineer Associate is the builder exam for Microsoft’s AI stack: planning solutions, generative and agentic patterns, computer vision, NLP, and knowledge mining. Official skills outlines change as products are renamed—always study the current Microsoft Learn certification page and exam guide, not a blog post from last year. Hands-on work in Azure AI Search, grounded generation, and identity/security matters more than memorizing portal clicks. Use this path’s RAG, agents, and governance concepts as the durable layer under the vendor UI. Renew on Microsoft’s published cadence so the credential stays current with the platform.",
+  },
+  {
+    slug: "google-cloud-genai-leader",
+    title: "Google Cloud Generative AI Leader",
+    tag: "certifications",
+    shortDefinition:
+      "Google Cloud credential for leaders who need to explain generative AI value, choose Google Cloud offerings, and govern responsible adoption without writing production pipelines.",
+    whyItMatters: [
+      "Aimed at strategy, product, and transformation roles—not model training.",
+      "Connects Vertex AI and Gemini-family products to business outcomes.",
+      "Useful when your organization is already on Google Cloud.",
+    ],
+    keyIdeas: ["Business value", "Google Cloud GenAI offerings", "Responsible adoption"],
+    relatedConcepts: [
+      "choosing-genai-certifications",
+      "enterprise-ai-patterns",
+      "responsible-ai",
+    ],
+    body: "Generative AI Leader tests whether you can sponsor GenAI work on Google Cloud: use-case selection, data and privacy implications, and which Vertex AI / Gemini capabilities fit a problem. It is a leadership and literacy exam, not proof you can debug retrieval. Read Google Cloud’s official certification page for domains and recommended training. Pair it with technical partners who own evaluation and serving. If your role is implementation, prefer an engineer certification on the same cloud instead of stacking leader badges.",
+  },
+  {
+    slug: "databricks-genai-engineer",
+    title: "Databricks Generative AI Engineer Associate",
+    tag: "certifications",
+    shortDefinition:
+      "Proctored Databricks credential for designing and deploying LLM applications—especially RAG—using Model Serving, MLflow, Vector Search, and Unity Catalog.",
+    whyItMatters: [
+      "Validates platform-specific RAG and lifecycle skills, not generic ChatGPT use.",
+      "Governance via Unity Catalog is part of the exam story.",
+      "Fits data platforms already standardized on Databricks.",
+    ],
+    keyIdeas: ["RAG on Databricks", "MLflow lifecycle", "Unity Catalog"],
+    relatedConcepts: [
+      "choosing-genai-certifications",
+      "rag",
+      "vector-databases",
+      "ai-governance",
+    ],
+    body: "The Databricks Certified Generative AI Engineer Associate exam expects you to decompose a GenAI product, pick models and tools, and ship RAG-style applications on the Databricks Data Intelligence Platform. Official materials emphasize Vector Search, Model Serving, MLflow, and Unity Catalog—not a generic notebook demo. Databricks recommends months of hands-on work and recertification on a two-year cycle. Study the current exam guide; map gaps to this path’s production RAG, evaluation, and governance pages. The badge is strongest when you can show a governed index and eval gates, not only a passing score.",
+  },
+  {
+    slug: "nvidia-nca-genl",
+    title: "NVIDIA Generative AI LLMs Associate",
+    tag: "certifications",
+    shortDefinition:
+      "NVIDIA-Certified Associate (NCA-GENL) exam on foundational generative AI and LLM concepts for developing and maintaining applications with NVIDIA solutions.",
+    whyItMatters: [
+      "More LLM-centric than a general cloud AI practitioner exam.",
+      "Useful when inference, GPUs, and NVIDIA software are part of the job.",
+      "Associate level: concepts and application, not a research paper defense.",
+    ],
+    keyIdeas: ["LLM fundamentals", "NVIDIA ecosystem", "Associate credential"],
+    relatedConcepts: [
+      "choosing-genai-certifications",
+      "llm",
+      "fine-tuning",
+      "rag",
+    ],
+    body: "NCA-GENL is NVIDIA’s associate certification for generative AI and large language models: prompting, experimentation, and maintaining LLM-enabled applications in the NVIDIA stack. It is remotely proctored with a short multiple-choice format; validity is typically two years. Use NVIDIA’s official certification page for the current blueprint and DLI courses. This path still matters: parametric limits, RAG, and evaluation questions show up regardless of vendor. If you do not work near GPUs or NVIDIA NIM/NeMo-style tooling, a cloud engineer cert on your employer’s stack may be a better signal.",
   },
 ];

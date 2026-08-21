@@ -82,9 +82,7 @@ export default async function GenaiConceptPage({
 
       <FieldSection label="Why it matters" items={concept.whyItMatters} />
       <FieldSection label="Key ideas" items={concept.keyIdeas} />
-      <TopResources
-        resources={resourcesForTopic(concept.slug, stage?.id)}
-      />
+      <TopResources resources={resourcesForTopic(concept.slug)} />
 
       {item.body && (
         <div className="border-t border-border pt-8">

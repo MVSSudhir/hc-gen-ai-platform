@@ -5,16 +5,12 @@
  *  - cross-references to slugs that do not exist
  *  - published items referencing unpublished items
  *  - updatedAt earlier than createdAt
- *  - GenAI stages/topics missing curated top resources
+ *  - GenAI concepts missing curated top resources
  *
  * Runs in prebuild and CI; a failure blocks deployment.
  */
 import { loadAllContent } from "../lib/content";
-import {
-  missingTopicResourceSlugs,
-  resourcesForStage,
-} from "../lib/genai-resources";
-import { genaiLearningStages } from "../lib/learning-path";
+import { missingTopicResourceSlugs } from "../lib/genai-resources";
 import { outgoingSlugs } from "../lib/relationships";
 
 let errors = 0;
@@ -52,12 +48,6 @@ try {
           `${label}: published item references unpublished "${ref}" (status: ${target.meta.status})`,
         );
       }
-    }
-  }
-
-  for (const stage of genaiLearningStages) {
-    if (!resourcesForStage(stage.id).length) {
-      fail(`genai stage "${stage.id}" has no top resources`);
     }
   }
 
