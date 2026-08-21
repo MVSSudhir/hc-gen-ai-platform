@@ -16,12 +16,13 @@ no user data collection.
 
 ## Stack
 
-- Next.js (App Router) + TypeScript, `output: "export"` — fully static HTML
+- Next.js (App Router) + TypeScript
 - Tailwind CSS
 - Content: MDX files with YAML frontmatter, validated by zod schemas
 - Search: static JSON index + client-side Fuse.js
-- Hosting: Cloudflare Workers static assets (wrangler)
-- CI/CD: GitHub Actions
+- Hosting: Vercel
+- DNS: Cloudflare (`hcsense.org`)
+- CI: GitHub Actions (validate on pull requests)
 
 ## Local development
 
@@ -64,26 +65,44 @@ frontmatter, run `npm run validate:content`.
 
 ## Personalization
 
-Replace the placeholders in [lib/site.ts](lib/site.ts) (name, email, LinkedIn,
-GitHub) and set `SITE_URL` / `CONTACT_EMAIL` (see `.env.example`). In GitHub,
-configure repository **variables** `SITE_URL` and `CONTACT_EMAIL` for CI
-builds.
+Replace the placeholders in [lib/site.ts](lib/site.ts) (LinkedIn, GitHub)
+and set `SITE_URL` / `CONTACT_EMAIL` (see `.env.example`). Canonical URL is
+`https://hcsense.org`. Set the same values as Vercel **Environment Variables**
+and as GitHub Actions **variables** for CI builds.
 
-## Deployment (Cloudflare)
+## Deployment (Vercel + Cloudflare DNS)
 
-The site deploys as static assets via Wrangler — no server runtime. Security
-headers (CSP, HSTS, etc.) are applied through `public/_headers`.
+The site runs on Vercel with native Next.js (App Router). Cloudflare holds DNS
+for `hcsense.org` only — it is not the origin.
 
-Manual deploy:
+### Connect the GitHub repo
+
+1. Import [MVSSudhir/hc-gen-ai-platform](https://github.com/MVSSudhir/hc-gen-ai-platform) at [vercel.com/new](https://vercel.com/new).
+2. Framework preset: **Next.js**. Build command `npm run build` (prebuild already validates content and builds the search index).
+3. Environment variables:
+   - `SITE_URL` = `https://hcsense.org`
+   - `CONTACT_EMAIL` = `sudsakblack@gmail.com`
+4. Add domains `hcsense.org` and `www.hcsense.org` in the Vercel project.
+
+Pushes to `main` deploy automatically. Vercel Analytics (if you enable it in the project) is the native visitor count — no extra site code.
+
+### Cloudflare DNS (DNS only / grey cloud)
+
+Do **not** proxy these records (grey-cloud / DNS only). Orange-cloud proxy conflicts with Vercel TLS.
+
+| Type | Name | Content |
+|------|------|---------|
+| A | `@` | `76.76.21.21` |
+| CNAME | `www` | `cname.vercel-dns.com` |
+
+`www.hcsense.org` redirects to `https://hcsense.org`.
+
+### Manual deploy
 
 ```bash
-npm run build
-npx wrangler deploy   # requires a Cloudflare account; wrangler will prompt to log in
+npx vercel login
+npx vercel --prod
 ```
-
-Automatic deploy: pushing to `main` runs `.github/workflows/deploy.yml`.
-Configure repository **secrets** `CLOUDFLARE_API_TOKEN` and
-`CLOUDFLARE_ACCOUNT_ID`.
 
 ## Research system (scaffolded, inactive)
 
@@ -101,11 +120,11 @@ provider interfaces and the candidate-record schema. See
 ## Repository layout
 
 ```
-app/                 # routes (App Router, static export)
+app/                 # routes (App Router)
 components/          # navigation, cards, content, filters, search, related, ui
 content/             # the knowledge base (MDX + frontmatter)
 lib/                 # content loader, schemas, taxonomy, search, SEO, research interfaces
 scripts/             # validation + search-index build scripts
 research/            # private research pipeline (queries, prompts, candidate queue)
-.github/workflows/   # validate, deploy, research (stub)
+.github/workflows/   # validate + research (stub)
 ```
