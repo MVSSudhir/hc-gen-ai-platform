@@ -5,23 +5,23 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "About",
-  description: `About ${site.name} — ${site.tagline}.`,
+  description: `${site.name} — ${site.tagline}. A knowledge site for learning and ideas, with ${site.contributor} as a contributor.`,
   path: "/about",
 });
 
-const capabilities = [
+const focus = [
+  "Practical Generative AI in Human Capital",
+  "Evidence-based AI adoption — what actually works",
+  "Workforce metrics that support real decisions",
+  "Knowledge architecture and structured content",
+];
+
+const library = [
   "People Analytics and workforce measurement",
   "Analytical problem solving and data visualization",
   "Generative AI patterns: RAG, embeddings, agents",
   "AI use-case identification in Human Capital",
   "Building AI-enabled analytical workflows",
-];
-
-const interests = [
-  "Practical Generative AI in Human Capital",
-  "Evidence-based AI adoption — what actually works",
-  "Workforce metrics that support real decisions",
-  "Knowledge architecture and structured content",
 ];
 
 export default function AboutPage() {
@@ -40,11 +40,10 @@ export default function AboutPage() {
       <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <section className="panel p-7 sm:p-9">
           <p className="definition max-w-none border-l-0 pl-0 text-[1.2rem] sm:text-[1.3rem]">
-            I work at the intersection of Human Capital, analytics and
-            Generative AI. This site is my working knowledge base: the GenAI
-            concepts I learn, the AI initiatives organizations can explore in
-            Human Capital, and the metrics and analytical approaches that make
-            workforce decisions measurable.
+            This site is for others to check learning and ideas — not a
+            personal portfolio. Use it to follow a Generative AI path, browse
+            Human Capital AI initiatives, and look up People Analytics metrics,
+            methods and dashboards when you have a real problem to solve.
           </p>
         </section>
 
@@ -53,7 +52,14 @@ export default function AboutPage() {
             aria-hidden="true"
             className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent/25 blur-3xl"
           />
-          <h2 className="eyebrow relative text-ink-muted">Contact</h2>
+          <h2 className="eyebrow relative text-ink-muted">Contributor</h2>
+          <p className="relative mt-5 font-serif text-xl font-medium tracking-tight text-ink-foreground">
+            {site.contributor}
+          </p>
+          <p className="relative mt-3 text-[15px] leading-relaxed text-ink-muted">
+            Writes and curates the library at the intersection of Human
+            Capital, analytics and Generative AI.
+          </p>
           <div className="relative mt-5 flex flex-col gap-3 text-[15px]">
             <a
               href={`mailto:${site.email}`}
@@ -85,9 +91,9 @@ export default function AboutPage() {
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2">
         <section className="panel p-7 sm:p-8">
-          <h2 className="eyebrow text-muted">Current areas of interest</h2>
+          <h2 className="eyebrow text-muted">What you will find</h2>
           <ul className="mt-5 space-y-2.5 text-[1.0625rem] leading-relaxed">
-            {interests.map((item) => (
+            {focus.map((item) => (
               <li key={item} className="flex gap-3">
                 <span
                   aria-hidden="true"
@@ -100,9 +106,9 @@ export default function AboutPage() {
         </section>
 
         <section className="panel p-7 sm:p-8">
-          <h2 className="eyebrow text-muted">Selected capabilities</h2>
+          <h2 className="eyebrow text-muted">The library covers</h2>
           <ul className="mt-5 space-y-2.5 text-[1.0625rem] leading-relaxed">
-            {capabilities.map((item) => (
+            {library.map((item) => (
               <li key={item} className="flex gap-3">
                 <span
                   aria-hidden="true"

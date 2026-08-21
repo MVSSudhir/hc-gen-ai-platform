@@ -9,7 +9,7 @@ import { verticalMeta } from "@/lib/site";
 const meta = verticalMeta.genai;
 
 export const metadata: Metadata = pageMetadata({
-  title: "Generative AI — My Learning Journey",
+  title: "Generative AI — Learning Path",
   description: meta.description,
   path: meta.path,
 });

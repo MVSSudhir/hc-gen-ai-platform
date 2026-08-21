@@ -38,10 +38,10 @@ export function personJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: site.name,
+    name: site.contributor,
     url: site.url,
     email: site.email,
-    description: site.tagline,
+    description: `Contributor to ${site.name}`,
     ...(site.linkedin || site.github
       ? { sameAs: [site.linkedin, site.github].filter(Boolean) }
       : {}),
@@ -55,6 +55,10 @@ export function websiteJsonLd() {
     name: site.name,
     url: site.url,
     description: site.description,
+    contributor: {
+      "@type": "Person",
+      name: site.contributor,
+    },
   };
 }
 
@@ -67,7 +71,7 @@ export function articleJsonLd(meta: ContentItem) {
     url: `${site.url}${itemPath(meta)}`,
     datePublished: meta.createdAt,
     dateModified: meta.updatedAt,
-    author: { "@type": "Person", name: site.name, url: site.url },
+    author: { "@type": "Person", name: site.contributor, url: site.url },
   };
 }
 

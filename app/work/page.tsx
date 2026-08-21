@@ -30,11 +30,11 @@ export default function WorkIndexPage() {
       <PageHeader
         kicker="Selected Work"
         title="Work"
-        description="What I work on, and selected projects that show the thinking behind this platform."
+        description="Selected projects and implementations that sit behind this knowledge library."
       />
 
       <section className="panel mb-8 p-7 sm:p-8">
-        <h2 className="eyebrow text-muted">What I work on</h2>
+        <h2 className="eyebrow text-muted">Areas in this library</h2>
         <ul className="mt-5 flex max-w-3xl flex-wrap gap-2.5">
           {areas.map((area) => (
             <li

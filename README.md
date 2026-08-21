@@ -1,8 +1,9 @@
-# Personal Knowledge & Human Capital Intelligence Platform
+# Human Capital Sense — Human Capital Knowledge
 
-A personal professional knowledge platform with three parallel verticals:
+A knowledge site for others to check learning and ideas, with three parallel
+verticals. M V S Sudhir is a contributor.
 
-- **A — GenAI** (`/genai`): my Generative AI learning journey — short, curated
+- **A — GenAI** (`/genai`): a Generative AI learning path — short, curated
   concept pages.
 - **B — Human Capital AI** (`/human-capital-ai`): a practitioner reference of
   AI/GenAI use cases in Human Capital, with evidence ratings and sources.
@@ -63,12 +64,13 @@ statistics or outcomes.
 To add content: copy an existing file in the same vertical, edit the
 frontmatter, run `npm run validate:content`.
 
-## Personalization
+## Site identity
 
-Replace the placeholders in [lib/site.ts](lib/site.ts) (LinkedIn, GitHub)
-and set `SITE_URL` / `CONTACT_EMAIL` (see `.env.example`). Canonical URL is
-`https://hcsense.org`. Set the same values as Vercel **Environment Variables**
-and as GitHub Actions **variables** for CI builds.
+Brand, tagline and contributor live in [lib/site.ts](lib/site.ts). Replace the
+LinkedIn/GitHub placeholders there and set `SITE_URL` / `CONTACT_EMAIL` (see
+`.env.example`). Canonical URL is `https://hcsense.org`. Set the same values as
+Vercel **Environment Variables** and as GitHub Actions **variables** for CI
+builds.
 
 ## Deployment (Vercel + Cloudflare DNS)
 

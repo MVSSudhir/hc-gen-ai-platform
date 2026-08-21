@@ -123,7 +123,7 @@ export default function HomePage() {
         <Container>
           <div className="relative pb-28 pt-16 sm:pb-32 sm:pt-20">
             <p className="eyebrow animate-fade-up text-ink-muted">
-              Personal knowledge platform
+              {site.tagline}
             </p>
             <h1 className="animate-fade-up delay-1 mt-5 font-serif text-[2.35rem] font-medium leading-[1.05] tracking-tight break-words sm:text-5xl md:text-6xl">
               {site.name}
@@ -140,22 +140,22 @@ export default function HomePage() {
               <span>Generative AI</span>
             </p>
             <p className="animate-fade-up delay-3 mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-ink-foreground/80">
-              My Generative AI learning journey, a reference guide to AI
-              initiatives in Human Capital, and a practical People Analytics
-              reference — built for people with real business problems.
+              A place to check learning and ideas: a Generative AI path,
+              Human Capital AI initiatives, and People Analytics references
+              for people with real business problems.
             </p>
             <div className="animate-fade-up delay-4 mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <Link
-                href="/work"
+                href="/genai"
                 className="inline-flex h-12 w-full items-center justify-center rounded-md bg-ink-foreground px-6 text-sm font-medium text-ink transition-colors hover:bg-white sm:h-11 sm:w-auto"
               >
-                Explore my work
+                Start learning
               </Link>
               <Link
                 href="/about"
                 className="inline-flex h-12 w-full items-center justify-center rounded-md border border-ink-border px-6 text-sm font-medium text-ink-foreground transition-colors hover:border-ink-muted hover:bg-ink-soft sm:h-11 sm:w-auto"
               >
-                About me
+                About this site
               </Link>
             </div>
           </div>
@@ -328,10 +328,10 @@ export default function HomePage() {
               <div>
                 <p className="eyebrow text-ink-muted">About</p>
                 <p className="mt-5 max-w-xl font-serif text-2xl leading-relaxed sm:text-[1.75rem]">
-                  I work at the intersection of Human Capital, analytics and
-                  Generative AI — measuring workforces, building analytical
-                  solutions, and exploring what AI can practically do for
-                  organizations and their people.
+                  Human Capital Sense is a knowledge site at the intersection
+                  of Human Capital, analytics and Generative AI — for anyone
+                  checking how to learn, measure workforces, and apply AI in
+                  practice.
                 </p>
               </div>
               <div className="flex flex-col gap-3 text-sm sm:items-end">
@@ -363,7 +363,7 @@ export default function HomePage() {
                   href="/about"
                   className="text-ink-muted transition-colors hover:text-ink-foreground"
                 >
-                  More about me →
+                  About this site →
                 </Link>
               </div>
             </div>

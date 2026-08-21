@@ -1,6 +1,7 @@
 /**
  * Central site configuration.
  *
+ * Brand is Human Capital Sense. M V S Sudhir is listed as a contributor.
  * Social links (LinkedIn, GitHub) should be filled in before launch.
  * Canonical URL is https://hcsense.org.
  */
@@ -13,10 +14,11 @@ function canonicalUrl(raw: string | undefined): string {
 }
 
 export const site = {
-  name: "M V S Sudhir",
-  tagline: "Human Capital × Analytics × Generative AI",
+  name: "Human Capital Sense",
+  tagline: "Human Capital Knowledge",
   description:
-    "A personal knowledge platform covering Generative AI concepts, AI use cases in Human Capital, and People Analytics — metrics, methods, dashboards and practical applications.",
+    "A knowledge site for learning and ideas across Generative AI, Human Capital AI, and People Analytics — concepts, use cases, metrics and methods you can apply.",
+  contributor: "M V S Sudhir",
   url: canonicalUrl(process.env.SITE_URL),
   email: process.env.CONTACT_EMAIL ?? "sudsakblack@gmail.com",
   linkedin: "", // e.g. "https://www.linkedin.com/in/your-handle"
@@ -26,7 +28,7 @@ export const site = {
 export const verticalMeta = {
   genai: {
     label: "Generative AI",
-    kicker: "My Learning Journey",
+    kicker: "Learning Path",
     path: "/genai",
     description:
       "A structured learning path through Generative AI — foundations to enterprise patterns — in short, practical concept pages.",

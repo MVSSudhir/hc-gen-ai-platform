@@ -63,7 +63,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-8">
         <Link
           href="/"
-          className={`min-w-0 truncate font-serif text-base font-medium tracking-tight transition-colors sm:text-lg ${
+          className={`min-w-0 font-serif text-[15px] font-medium leading-tight tracking-tight transition-colors sm:text-lg ${
             onInk ? "hover:text-white" : "hover:text-accent"
           }`}
         >

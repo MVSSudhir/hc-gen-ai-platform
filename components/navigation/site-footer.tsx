@@ -93,8 +93,8 @@ export function SiteFooter() {
         </div>
         <div className="mt-14 border-t border-ink-border pt-6">
           <p className="text-xs text-ink-muted">
-            © 2026 {site.name}. A personal knowledge platform for Generative
-            AI, Human Capital AI and People Analytics.
+            © 2026 {site.name}. {site.tagline} for Generative AI, Human
+            Capital AI and People Analytics. Contributor: {site.contributor}.
           </p>
         </div>
       </div>
