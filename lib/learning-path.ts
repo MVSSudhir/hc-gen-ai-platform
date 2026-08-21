@@ -2,6 +2,8 @@
  * Curated GenAI learning path — aligned to applied GenAI engineering:
  * parametric limits → context & cost → programmatic prompting →
  * production RAG → agents → tools/MCP → evaluation & governance.
+ *
+ * Top resources (docs, papers, YouTube) live in lib/genai-resources.ts.
  */
 export const genaiLearningStages = [
   {

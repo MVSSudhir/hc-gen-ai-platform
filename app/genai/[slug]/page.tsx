@@ -4,10 +4,12 @@ import { notFound } from "next/navigation";
 import { Markdown } from "@/components/content/markdown";
 import { FieldSection } from "@/components/content/field-section";
 import { PageHeader } from "@/components/content/page-header";
+import { TopResources } from "@/components/content/top-resources";
 import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { RelatedContent } from "@/components/related/related-content";
 import { DemoNotice } from "@/components/ui/demo-notice";
 import { genaiConcepts, getItem, itemPath } from "@/lib/content";
+import { resourcesForTopic } from "@/lib/genai-resources";
 import { genaiLearningStages } from "@/lib/learning-path";
 import { referencedBy, relatedGroups } from "@/lib/relationships";
 import { articleJsonLd, breadcrumbJsonLd, contentMetadata } from "@/lib/seo";
@@ -80,6 +82,9 @@ export default async function GenaiConceptPage({
 
       <FieldSection label="Why it matters" items={concept.whyItMatters} />
       <FieldSection label="Key ideas" items={concept.keyIdeas} />
+      <TopResources
+        resources={resourcesForTopic(concept.slug, stage?.id)}
+      />
 
       {item.body && (
         <div className="border-t border-border pt-8">

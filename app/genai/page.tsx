@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/content/page-header";
+import { TopResources } from "@/components/content/top-resources";
 import { genaiConcepts, itemPath } from "@/lib/content";
+import {
+  resourcesForStage,
+  topicOnlyResources,
+} from "@/lib/genai-resources";
 import { genaiLearningStages } from "@/lib/learning-path";
 import { pageMetadata } from "@/lib/seo";
 import { verticalMeta } from "@/lib/site";
@@ -36,7 +41,7 @@ export default function GenaiIndexPage() {
       <PageHeader
         kicker={meta.kicker}
         title="Generative AI"
-        description={`${meta.description} ${concepts.length} concepts across ${stages.length} learning stages — follow the path in order, or jump to what you need.`}
+        description={`${meta.description} ${concepts.length} concepts across ${stages.length} learning stages — follow the path in order, or jump to what you need. Each stage and topic includes top resources, including videos.`}
       />
 
       <nav
@@ -81,11 +86,16 @@ export default function GenaiIndexPage() {
               </p>
             </div>
 
-            <ol className="panel overflow-hidden">
+            <TopResources
+              resources={resourcesForStage(stage.id)}
+              layout="panel"
+            />
+
+            <ol className="panel mt-5 overflow-hidden">
               {stage.items.map(({ meta: concept }, index) => (
                 <li
                   key={concept.slug}
-                  className="group relative grid grid-cols-[auto_1fr] items-baseline gap-3 border-b border-border px-4 py-5 last:border-b-0 sm:grid-cols-[auto_1fr_auto] sm:gap-4 sm:px-6"
+                  className="group grid grid-cols-[auto_1fr] items-baseline gap-3 border-b border-border px-4 py-5 last:border-b-0 sm:grid-cols-[auto_1fr_auto] sm:gap-4 sm:px-6"
                 >
                   <span className="font-serif text-sm italic text-faint tabular-nums">
                     {String(concept.learningOrder ?? index + 1).padStart(2, "0")}
@@ -96,13 +106,17 @@ export default function GenaiIndexPage() {
                         href={itemPath(concept)}
                         className="transition-colors group-hover:text-accent"
                       >
-                        <span className="absolute inset-0" aria-hidden="true" />
                         {concept.title}
                       </Link>
                     </h3>
                     <p className="mt-1.5 max-w-2xl text-[15px] leading-relaxed text-muted">
                       {concept.shortDefinition.trim()}
                     </p>
+                    <TopResources
+                      resources={topicOnlyResources(concept.slug)}
+                      layout="inline"
+                      embedVideos={false}
+                    />
                   </div>
                   <span
                     aria-hidden="true"
