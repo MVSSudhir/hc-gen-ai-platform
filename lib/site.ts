@@ -4,12 +4,20 @@
  * Social links (LinkedIn, GitHub) should be filled in before launch.
  * Canonical URL is https://hcsense.org.
  */
+function canonicalUrl(raw: string | undefined): string {
+  const fallback = "https://hcsense.org";
+  const value = (raw ?? fallback).trim().replace(/\/+$/, "");
+  if (!value) return fallback;
+  if (/^https?:\/\//i.test(value)) return value;
+  return `https://${value}`;
+}
+
 export const site = {
   name: "M V S Sudhir",
   tagline: "Human Capital × Analytics × Generative AI",
   description:
     "A personal knowledge platform covering Generative AI concepts, AI use cases in Human Capital, and People Analytics — metrics, methods, dashboards and practical applications.",
-  url: process.env.SITE_URL ?? "https://hcsense.org",
+  url: canonicalUrl(process.env.SITE_URL),
   email: process.env.CONTACT_EMAIL ?? "sudsakblack@gmail.com",
   linkedin: "", // e.g. "https://www.linkedin.com/in/your-handle"
   github: "", // e.g. "https://github.com/your-handle"
