@@ -1,12 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "nextjs",
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.hcsense.org" }],
-      "destination": "https://hcsense.org/:path*",
-      "permanent": true
-    }
-  ]
+  "framework": "nextjs"
 }
